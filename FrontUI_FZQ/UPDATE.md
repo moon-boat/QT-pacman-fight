@@ -17,3 +17,17 @@
         |   setting(1)
         |   game
         |   |   setting(2)
+
+## 2023年5月25日14:35:20
+
+更新内容：  
+    设置界面透明度设置（全窗口及其子窗口、控件）  
+    字体优化  
+    按钮扁平化  
+    更新资源文件（已加入qrc）  
+        pacman.png  
+        bullet.png  
+        score.png  
+        blankBack.png  
+
+    界面结构未修改

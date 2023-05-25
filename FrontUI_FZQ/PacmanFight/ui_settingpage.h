@@ -29,54 +29,101 @@ public:
         SettingPage->setWindowModality(Qt::WindowModal);
         SettingPage->resize(1024, 768);
         QPalette palette;
-        QBrush brush(QColor(0, 0, 0, 255));
+        QBrush brush(QColor(0, 0, 0, 0));
         brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Button, brush);
+        palette.setBrush(QPalette::Active, QPalette::Base, brush);
         palette.setBrush(QPalette::Active, QPalette::Window, brush);
-        QBrush brush1(QColor(46, 47, 48, 255));
-        brush1.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Inactive, QPalette::Window, brush1);
-        QBrush brush2(QColor(68, 68, 68, 255));
-        brush2.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette.setBrush(QPalette::Inactive, QPalette::Button, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Base, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Window, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::Button, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::Base, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::Window, brush);
         SettingPage->setPalette(palette);
-        SettingPage->setWindowOpacity(0.500000000000000);
-        SettingPage->setAutoFillBackground(true);
+        SettingPage->setAutoFillBackground(false);
+        SettingPage->setStyleSheet(QString::fromUtf8("background-color: rgba(0, 0, 0, 0);\n"
+"border-color: rgba(0, 0, 0, 0);"));
         ReturnParentInSetting = new QPushButton(SettingPage);
         ReturnParentInSetting->setObjectName("ReturnParentInSetting");
-        ReturnParentInSetting->setGeometry(QRect(500, 400, 92, 29));
+        ReturnParentInSetting->setGeometry(QRect(550, 400, 92, 29));
         QPalette palette1;
-        QBrush brush3(QColor(79, 208, 182, 255));
-        brush3.setStyle(Qt::SolidPattern);
-        palette1.setBrush(QPalette::Active, QPalette::ButtonText, brush3);
-        QBrush brush4(QColor(167, 167, 167, 255));
-        brush4.setStyle(Qt::SolidPattern);
-        palette1.setBrush(QPalette::Active, QPalette::Window, brush4);
-        QBrush brush5(QColor(208, 208, 208, 255));
-        brush5.setStyle(Qt::SolidPattern);
-        palette1.setBrush(QPalette::Inactive, QPalette::ButtonText, brush5);
-        palette1.setBrush(QPalette::Inactive, QPalette::Window, brush1);
-        QBrush brush6(QColor(164, 166, 168, 96));
-        brush6.setStyle(Qt::SolidPattern);
-        palette1.setBrush(QPalette::Disabled, QPalette::ButtonText, brush6);
-        palette1.setBrush(QPalette::Disabled, QPalette::Window, brush4);
+        QBrush brush1(QColor(255, 0, 4, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette1.setBrush(QPalette::Active, QPalette::WindowText, brush1);
+        palette1.setBrush(QPalette::Active, QPalette::Button, brush);
+        palette1.setBrush(QPalette::Active, QPalette::Text, brush1);
+        palette1.setBrush(QPalette::Active, QPalette::ButtonText, brush1);
+        palette1.setBrush(QPalette::Active, QPalette::Base, brush);
+        palette1.setBrush(QPalette::Active, QPalette::Window, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette1.setBrush(QPalette::Active, QPalette::PlaceholderText, brush1);
+#endif
+        palette1.setBrush(QPalette::Inactive, QPalette::WindowText, brush1);
+        palette1.setBrush(QPalette::Inactive, QPalette::Button, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::Text, brush1);
+        palette1.setBrush(QPalette::Inactive, QPalette::ButtonText, brush1);
+        palette1.setBrush(QPalette::Inactive, QPalette::Base, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::Window, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette1.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush1);
+#endif
+        palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette1.setBrush(QPalette::Disabled, QPalette::Button, brush);
+        palette1.setBrush(QPalette::Disabled, QPalette::Text, brush1);
+        palette1.setBrush(QPalette::Disabled, QPalette::ButtonText, brush1);
+        palette1.setBrush(QPalette::Disabled, QPalette::Base, brush);
+        palette1.setBrush(QPalette::Disabled, QPalette::Window, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette1.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush1);
+#endif
         ReturnParentInSetting->setPalette(palette1);
         QFont font;
-        font.setPointSize(14);
+        font.setFamilies({QString::fromUtf8("Segoe Print")});
+        font.setPointSize(16);
+        font.setBold(false);
+        font.setItalic(false);
         ReturnParentInSetting->setFont(font);
-        ReturnParentInSetting->setStyleSheet(QString::fromUtf8("color::rgb(0, 0, 0)"));
+        ReturnParentInSetting->setStyleSheet(QString::fromUtf8("background-image: url(:/images/resources/blankBack.png);\n"
+"color: rgb(255, 0, 4);\n"
+"font: 16pt \"Segoe Print\";"));
         ReturnParentInSetting->setFlat(true);
         QuitButtonInSetting = new QPushButton(SettingPage);
         QuitButtonInSetting->setObjectName("QuitButtonInSetting");
-        QuitButtonInSetting->setGeometry(QRect(370, 400, 92, 29));
+        QuitButtonInSetting->setGeometry(QRect(330, 400, 92, 29));
         QPalette palette2;
-        palette2.setBrush(QPalette::Active, QPalette::ButtonText, brush3);
-        palette2.setBrush(QPalette::Active, QPalette::Window, brush4);
-        palette2.setBrush(QPalette::Inactive, QPalette::ButtonText, brush5);
-        palette2.setBrush(QPalette::Inactive, QPalette::Window, brush1);
-        palette2.setBrush(QPalette::Disabled, QPalette::ButtonText, brush6);
-        palette2.setBrush(QPalette::Disabled, QPalette::Window, brush4);
+        palette2.setBrush(QPalette::Active, QPalette::WindowText, brush1);
+        palette2.setBrush(QPalette::Active, QPalette::Button, brush);
+        palette2.setBrush(QPalette::Active, QPalette::Text, brush1);
+        palette2.setBrush(QPalette::Active, QPalette::ButtonText, brush1);
+        palette2.setBrush(QPalette::Active, QPalette::Base, brush);
+        palette2.setBrush(QPalette::Active, QPalette::Window, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette2.setBrush(QPalette::Active, QPalette::PlaceholderText, brush1);
+#endif
+        palette2.setBrush(QPalette::Inactive, QPalette::WindowText, brush1);
+        palette2.setBrush(QPalette::Inactive, QPalette::Button, brush);
+        palette2.setBrush(QPalette::Inactive, QPalette::Text, brush1);
+        palette2.setBrush(QPalette::Inactive, QPalette::ButtonText, brush1);
+        palette2.setBrush(QPalette::Inactive, QPalette::Base, brush);
+        palette2.setBrush(QPalette::Inactive, QPalette::Window, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette2.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush1);
+#endif
+        palette2.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette2.setBrush(QPalette::Disabled, QPalette::Button, brush);
+        palette2.setBrush(QPalette::Disabled, QPalette::Text, brush1);
+        palette2.setBrush(QPalette::Disabled, QPalette::ButtonText, brush1);
+        palette2.setBrush(QPalette::Disabled, QPalette::Base, brush);
+        palette2.setBrush(QPalette::Disabled, QPalette::Window, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette2.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush1);
+#endif
         QuitButtonInSetting->setPalette(palette2);
         QuitButtonInSetting->setFont(font);
+        QuitButtonInSetting->setStyleSheet(QString::fromUtf8("background-image: url(:/images/resources/blankBack.png);\n"
+"color: rgb(255, 0, 4);\n"
+"font: 16pt \"Segoe Print\";"));
         QuitButtonInSetting->setFlat(true);
 
         retranslateUi(SettingPage);

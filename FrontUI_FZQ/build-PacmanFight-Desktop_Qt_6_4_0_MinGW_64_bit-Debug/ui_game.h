@@ -28,7 +28,11 @@ public:
         Game->resize(1024, 768);
         GameSettingButton = new QPushButton(Game);
         GameSettingButton->setObjectName("GameSettingButton");
-        GameSettingButton->setGeometry(QRect(20, 50, 92, 29));
+        GameSettingButton->setGeometry(QRect(0, 0, 131, 41));
+        GameSettingButton->setStyleSheet(QString::fromUtf8("background-image: url(:/images/resources/blankBack.png);\n"
+"color: rgb(255, 0, 4);\n"
+"font: 16pt \"Segoe Print\";"));
+        GameSettingButton->setFlat(true);
 
         retranslateUi(Game);
 

@@ -16,14 +16,22 @@
   <widget class="QPushButton" name="GameSettingButton">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>50</y>
-     <width>92</width>
-     <height>29</height>
+     <x>0</x>
+     <y>0</y>
+     <width>131</width>
+     <height>41</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 0, 4);
+font: 16pt &quot;Segoe Print&quot;;</string>
    </property>
    <property name="text">
     <string>Setting</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
  </widget>

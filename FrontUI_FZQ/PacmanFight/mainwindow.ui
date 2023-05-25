@@ -34,8 +34,19 @@
     </property>
     <property name="font">
      <font>
-      <family>Terminal</family>
+      <family>Segoe Print</family>
+      <pointsize>16</pointsize>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 0, 4);
+font: 16pt &quot;Segoe Print&quot;;</string>
     </property>
     <property name="text">
      <string>Start</string>
@@ -62,6 +73,14 @@
       <height>51</height>
      </rect>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 0, 4);
+font: 16pt &quot;Segoe Print&quot;;</string>
+    </property>
     <property name="text">
      <string>Settings</string>
     </property>
@@ -77,6 +96,11 @@
       <width>121</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 0, 4);
+font: 16pt &quot;Segoe Print&quot;;</string>
     </property>
     <property name="text">
      <string>Quit</string>

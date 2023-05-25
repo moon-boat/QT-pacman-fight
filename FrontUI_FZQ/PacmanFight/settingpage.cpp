@@ -7,6 +7,7 @@ SettingPage::SettingPage(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowFlags(Qt::Popup);
+    setWindowOpacity(0.7);
 }
 
 SettingPage::~SettingPage()

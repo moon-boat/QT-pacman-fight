@@ -39,18 +39,32 @@ public:
         StartGameButton->setObjectName("StartGameButton");
         StartGameButton->setGeometry(QRect(100, 320, 121, 51));
         QFont font;
-        font.setFamilies({QString::fromUtf8("Terminal")});
+        font.setFamilies({QString::fromUtf8("Segoe Print")});
+        font.setPointSize(16);
+        font.setBold(false);
+        font.setItalic(false);
         StartGameButton->setFont(font);
+        StartGameButton->setAutoFillBackground(false);
+        StartGameButton->setStyleSheet(QString::fromUtf8("background-image: url(:/images/resources/blankBack.png);\n"
+"color: rgb(255, 0, 4);\n"
+"font: 16pt \"Segoe Print\";"));
         StartGameButton->setCheckable(false);
         StartGameButton->setAutoDefault(false);
         StartGameButton->setFlat(true);
         MainMenuSettingButton = new QPushButton(centralwidget);
         MainMenuSettingButton->setObjectName("MainMenuSettingButton");
         MainMenuSettingButton->setGeometry(QRect(100, 370, 121, 51));
+        MainMenuSettingButton->setAutoFillBackground(false);
+        MainMenuSettingButton->setStyleSheet(QString::fromUtf8("background-image: url(:/images/resources/blankBack.png);\n"
+"color: rgb(255, 0, 4);\n"
+"font: 16pt \"Segoe Print\";"));
         MainMenuSettingButton->setFlat(true);
         MainMenuQuitButton = new QPushButton(centralwidget);
         MainMenuQuitButton->setObjectName("MainMenuQuitButton");
         MainMenuQuitButton->setGeometry(QRect(100, 420, 121, 51));
+        MainMenuQuitButton->setStyleSheet(QString::fromUtf8("background-image: url(:/images/resources/blankBack.png);\n"
+"color: rgb(255, 0, 4);\n"
+"font: 16pt \"Segoe Print\";"));
         MainMenuQuitButton->setFlat(true);
         MainWindow->setCentralWidget(centralwidget);
 

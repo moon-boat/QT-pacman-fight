@@ -714,10 +714,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "E:\\ProgramFiles\\Github\\QT_TeamWork\\QT-pacman-fight\\FrontUI_FZQ\\PacmanFight\\ui_settingPage.h"
+        "E:\\ProgramFiles\\Github\\QT_TeamWork\\QT-pacman-fight\\FrontUI_FZQ\\PacmanFight\\ui_settingpage.h"
     ],
     "directory": "E:/ProgramFiles/Github/QT_TeamWork/QT-pacman-fight/FrontUI_FZQ/build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "E:/ProgramFiles/Github/QT_TeamWork/QT-pacman-fight/FrontUI_FZQ/PacmanFight/ui_settingPage.h"
+    "file": "E:/ProgramFiles/Github/QT_TeamWork/QT-pacman-fight/FrontUI_FZQ/PacmanFight/ui_settingpage.h"
 },
 {
     "arguments": [
