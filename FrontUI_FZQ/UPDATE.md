@@ -5,6 +5,7 @@
     PacmanFight文件夹为项目文件，其他内容为编译过程中产生的。源代码参见PacmanFight文件夹，exe文件位于.\FrontUI_FZQ\build-PacmanFight-Desktop...\debug文件夹内，直接运行PacmanFight.exe以查看效果。
 
 完成内容：  
+    
     主界面（仅有start, setting, quit按钮）  
     游戏界面（仅有setting按钮）  
     设置界面（仅有quit, back按钮）  
@@ -21,6 +22,7 @@
 ## 2023年5月25日14:35:20
 
 更新内容：  
+    
     设置界面透明度设置（全窗口及其子窗口、控件）  
     字体优化  
     按钮扁平化  
