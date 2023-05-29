@@ -119,7 +119,11 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_resources.cpp
 release/qrc_resources.cpp: resources.qrc \
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/bin/rcc.exe \
-		resources/mainback.png
+		resources/score.png \
+		resources/blankBack.png \
+		resources/pacman.png \
+		resources/mainback.png \
+		resources/bullet.png
 	E:\ProgramFiles\CppGUI\qt\6.4.0\mingw_64\bin\rcc.exe -name resources --no-zstd resources.qrc -o release\qrc_resources.cpp
 
 compiler_moc_predefs_make_all: release/moc_predefs.h

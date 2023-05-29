@@ -2,6 +2,8 @@
 #define GAME_H
 
 #include <QWidget>
+#include "settingpage.h"
+#include "mainwindow.h"
 
 namespace Ui {
 class Game;
@@ -22,7 +24,8 @@ private slots:
 
 private:
     Ui::Game *ui;
-    QWidget *returnTo;
+    MainWindow *returnTo;
+    SettingPage *sp;
     void JustClose();
 };
 

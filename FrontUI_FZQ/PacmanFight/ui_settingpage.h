@@ -84,9 +84,14 @@ public:
         font.setBold(false);
         font.setItalic(false);
         ReturnParentInSetting->setFont(font);
-        ReturnParentInSetting->setStyleSheet(QString::fromUtf8("background-image: url(:/images/resources/blankBack.png);\n"
+        ReturnParentInSetting->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"background-image: url(:/images/resources/blankBack.png);\n"
 "color: rgb(255, 0, 4);\n"
-"font: 16pt \"Segoe Print\";"));
+"font: 16pt \"Segoe Print\";\n"
+"}\n"
+"QPushButton::hover{\n"
+"	color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:0.166 rgba(255, 255, 0, 255), stop:0.333 rgba(0, 255, 0, 255), stop:0.5 rgba(0, 255, 255, 255), stop:0.666 rgba(0, 0, 255, 255), stop:0.833 rgba(255, 0, 255, 255), stop:1 rgba(255, 0, 0, 255));\n"
+"}"));
         ReturnParentInSetting->setFlat(true);
         QuitButtonInSetting = new QPushButton(SettingPage);
         QuitButtonInSetting->setObjectName("QuitButtonInSetting");
@@ -121,9 +126,14 @@ public:
 #endif
         QuitButtonInSetting->setPalette(palette2);
         QuitButtonInSetting->setFont(font);
-        QuitButtonInSetting->setStyleSheet(QString::fromUtf8("background-image: url(:/images/resources/blankBack.png);\n"
+        QuitButtonInSetting->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"background-image: url(:/images/resources/blankBack.png);\n"
 "color: rgb(255, 0, 4);\n"
-"font: 16pt \"Segoe Print\";"));
+"font: 16pt \"Segoe Print\";\n"
+"}\n"
+"QPushButton::hover{\n"
+"	color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:0.166 rgba(255, 255, 0, 255), stop:0.333 rgba(0, 255, 0, 255), stop:0.5 rgba(0, 255, 255, 255), stop:0.666 rgba(0, 0, 255, 255), stop:0.833 rgba(255, 0, 255, 255), stop:1 rgba(255, 0, 0, 255));\n"
+"}"));
         QuitButtonInSetting->setFlat(true);
 
         retranslateUi(SettingPage);

@@ -45,9 +45,14 @@ public:
         font.setItalic(false);
         StartGameButton->setFont(font);
         StartGameButton->setAutoFillBackground(false);
-        StartGameButton->setStyleSheet(QString::fromUtf8("background-image: url(:/images/resources/blankBack.png);\n"
+        StartGameButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"background-image: url(:/images/resources/blankBack.png);\n"
 "color: rgb(255, 0, 4);\n"
-"font: 16pt \"Segoe Print\";"));
+"font: 16pt \"Segoe Print\";\n"
+"}\n"
+"QPushButton::hover{\n"
+"	color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:0.166 rgba(255, 255, 0, 255), stop:0.333 rgba(0, 255, 0, 255), stop:0.5 rgba(0, 255, 255, 255), stop:0.666 rgba(0, 0, 255, 255), stop:0.833 rgba(255, 0, 255, 255), stop:1 rgba(255, 0, 0, 255));\n"
+"}"));
         StartGameButton->setCheckable(false);
         StartGameButton->setAutoDefault(false);
         StartGameButton->setFlat(true);
@@ -55,16 +60,26 @@ public:
         MainMenuSettingButton->setObjectName("MainMenuSettingButton");
         MainMenuSettingButton->setGeometry(QRect(100, 370, 121, 51));
         MainMenuSettingButton->setAutoFillBackground(false);
-        MainMenuSettingButton->setStyleSheet(QString::fromUtf8("background-image: url(:/images/resources/blankBack.png);\n"
+        MainMenuSettingButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"background-image: url(:/images/resources/blankBack.png);\n"
 "color: rgb(255, 0, 4);\n"
-"font: 16pt \"Segoe Print\";"));
+"font: 16pt \"Segoe Print\";\n"
+"}\n"
+"QPushButton::hover{\n"
+"	color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:0.166 rgba(255, 255, 0, 255), stop:0.333 rgba(0, 255, 0, 255), stop:0.5 rgba(0, 255, 255, 255), stop:0.666 rgba(0, 0, 255, 255), stop:0.833 rgba(255, 0, 255, 255), stop:1 rgba(255, 0, 0, 255));\n"
+"}"));
         MainMenuSettingButton->setFlat(true);
         MainMenuQuitButton = new QPushButton(centralwidget);
         MainMenuQuitButton->setObjectName("MainMenuQuitButton");
         MainMenuQuitButton->setGeometry(QRect(100, 420, 121, 51));
-        MainMenuQuitButton->setStyleSheet(QString::fromUtf8("background-image: url(:/images/resources/blankBack.png);\n"
+        MainMenuQuitButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"background-image: url(:/images/resources/blankBack.png);\n"
 "color: rgb(255, 0, 4);\n"
-"font: 16pt \"Segoe Print\";"));
+"font: 16pt \"Segoe Print\";\n"
+"}\n"
+"QPushButton::hover{\n"
+"	color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:0.166 rgba(255, 255, 0, 255), stop:0.333 rgba(0, 255, 0, 255), stop:0.5 rgba(0, 255, 255, 255), stop:0.666 rgba(0, 0, 255, 255), stop:0.833 rgba(255, 0, 255, 255), stop:1 rgba(255, 0, 0, 255));\n"
+"}"));
         MainMenuQuitButton->setFlat(true);
         MainWindow->setCentralWidget(centralwidget);
 

@@ -33,3 +33,14 @@
         blankBack.png  
 
     界面结构未修改
+
+## 2023年5月29日21:40:14
+
+更新内容：  
+
+    按钮hover样式表更新（目前为rainbow渐变），并已解决界面转换间的按钮样式未更新问题  
+    更新界面转换逻辑，消除了原有的memory leak问题  
+    将红蓝双方的Score图标加入game界面，预设了label用以显示值  
+    更新资源文件（已加入qrc）  
+        BlueScore.png  
+        RedScore.png  

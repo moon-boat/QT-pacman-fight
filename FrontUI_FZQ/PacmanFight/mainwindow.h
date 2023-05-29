@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "settingpage.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,6 +16,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public slots:
     void recQuitSign(bool a);
 
 private slots:
@@ -26,5 +28,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    SettingPage *sp;
+
 };
 #endif // MAINWINDOW_H

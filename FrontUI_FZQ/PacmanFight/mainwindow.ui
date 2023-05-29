@@ -44,9 +44,14 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/images/resources/blankBack.png);
+     <string notr="true">QPushButton{
+background-image: url(:/images/resources/blankBack.png);
 color: rgb(255, 0, 4);
-font: 16pt &quot;Segoe Print&quot;;</string>
+font: 16pt &quot;Segoe Print&quot;;
+}
+QPushButton::hover{
+	color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:0.166 rgba(255, 255, 0, 255), stop:0.333 rgba(0, 255, 0, 255), stop:0.5 rgba(0, 255, 255, 255), stop:0.666 rgba(0, 0, 255, 255), stop:0.833 rgba(255, 0, 255, 255), stop:1 rgba(255, 0, 0, 255));
+}</string>
     </property>
     <property name="text">
      <string>Start</string>
@@ -77,9 +82,14 @@ font: 16pt &quot;Segoe Print&quot;;</string>
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/images/resources/blankBack.png);
+     <string notr="true">QPushButton{
+background-image: url(:/images/resources/blankBack.png);
 color: rgb(255, 0, 4);
-font: 16pt &quot;Segoe Print&quot;;</string>
+font: 16pt &quot;Segoe Print&quot;;
+}
+QPushButton::hover{
+	color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:0.166 rgba(255, 255, 0, 255), stop:0.333 rgba(0, 255, 0, 255), stop:0.5 rgba(0, 255, 255, 255), stop:0.666 rgba(0, 0, 255, 255), stop:0.833 rgba(255, 0, 255, 255), stop:1 rgba(255, 0, 0, 255));
+}</string>
     </property>
     <property name="text">
      <string>Settings</string>
@@ -98,9 +108,14 @@ font: 16pt &quot;Segoe Print&quot;;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/images/resources/blankBack.png);
+     <string notr="true">QPushButton{
+background-image: url(:/images/resources/blankBack.png);
 color: rgb(255, 0, 4);
-font: 16pt &quot;Segoe Print&quot;;</string>
+font: 16pt &quot;Segoe Print&quot;;
+}
+QPushButton::hover{
+	color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:0.166 rgba(255, 255, 0, 255), stop:0.333 rgba(0, 255, 0, 255), stop:0.5 rgba(0, 255, 255, 255), stop:0.666 rgba(0, 0, 255, 255), stop:0.833 rgba(255, 0, 255, 255), stop:1 rgba(255, 0, 0, 255));
+}</string>
     </property>
     <property name="text">
      <string>Quit</string>
