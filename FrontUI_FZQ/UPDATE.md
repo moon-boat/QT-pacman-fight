@@ -44,3 +44,10 @@
     更新资源文件（已加入qrc）  
         BlueScore.png  
         RedScore.png  
+
+## 2023年5月31日19:18:17
+
+更新内容：  
+
+    Score显示优化为 Text with Stylesheet，图片资源已从qrc删除  
+    删除按钮样式更新功能中多余代码  

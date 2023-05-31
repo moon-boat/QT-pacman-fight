@@ -121,9 +121,7 @@ debug/qrc_resources.cpp: ../PacmanFight/resources.qrc \
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/bin/rcc.exe \
 		../PacmanFight/resources/score.png \
 		../PacmanFight/resources/blankBack.png \
-		../PacmanFight/resources/BlueScore.png \
 		../PacmanFight/resources/pacman.png \
-		../PacmanFight/resources/RedScore.png \
 		../PacmanFight/resources/mainback.png \
 		../PacmanFight/resources/bullet.png
 	E:\ProgramFiles\CppGUI\qt\6.4.0\mingw_64\bin\rcc.exe -name resources --no-zstd ..\PacmanFight\resources.qrc -o debug\qrc_resources.cpp

@@ -24,8 +24,6 @@ void MainWindow::on_StartGameButton_clicked()
 {
     Game *gaming = new Game(nullptr, this);
     ui->StartGameButton->setAttribute(Qt::WA_UnderMouse, false);
-    QEvent HE(QEvent::HoverLeave);
-    QCoreApplication::sendEvent(ui->StartGameButton, &HE);
     gaming->show();
     this->close();
 }
@@ -38,8 +36,6 @@ void MainWindow::on_MainMenuSettingButton_clicked()
     QPoint globalPos = mapToGlobal(QPoint(0, 0));
     sp->move(globalPos.x(), globalPos.y());
     ui->MainMenuSettingButton->setAttribute(Qt::WA_UnderMouse, false);
-    QEvent HE(QEvent::HoverLeave);
-    QCoreApplication::sendEvent(ui->MainMenuSettingButton, &HE);
     sp->show();
     connect(sp, &SettingPage::shouldQuit, this, &MainWindow::recQuitSign, Qt::UniqueConnection);
 }

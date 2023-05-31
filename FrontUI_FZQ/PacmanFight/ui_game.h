@@ -21,9 +21,9 @@ class Ui_Game
 {
 public:
     QPushButton *GameSettingButton;
-    QLabel *RedScorePixmapLabel;
+    QLabel *RedScoreTextLabel;
     QLabel *RedScoreLabel;
-    QLabel *BlueScorePixmapLabel;
+    QLabel *BlueScoreTextLabel;
     QLabel *BlueScoreLabel;
 
     void setupUi(QWidget *Game)
@@ -43,15 +43,23 @@ public:
 "	color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:0.166 rgba(255, 255, 0, 255), stop:0.333 rgba(0, 255, 0, 255), stop:0.5 rgba(0, 255, 255, 255), stop:0.666 rgba(0, 0, 255, 255), stop:0.833 rgba(255, 0, 255, 255), stop:1 rgba(255, 0, 0, 255));\n"
 "}"));
         GameSettingButton->setFlat(true);
-        RedScorePixmapLabel = new QLabel(Game);
-        RedScorePixmapLabel->setObjectName("RedScorePixmapLabel");
-        RedScorePixmapLabel->setGeometry(QRect(130, 0, 131, 41));
+        RedScoreTextLabel = new QLabel(Game);
+        RedScoreTextLabel->setObjectName("RedScoreTextLabel");
+        RedScoreTextLabel->setGeometry(QRect(130, 0, 131, 41));
+        RedScoreTextLabel->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);\n"
+"font: italic 24pt \"Monotype Corsiva\";\n"
+"text-decoration: underline;"));
+        RedScoreTextLabel->setAlignment(Qt::AlignCenter);
         RedScoreLabel = new QLabel(Game);
         RedScoreLabel->setObjectName("RedScoreLabel");
         RedScoreLabel->setGeometry(QRect(260, 0, 60, 41));
-        BlueScorePixmapLabel = new QLabel(Game);
-        BlueScorePixmapLabel->setObjectName("BlueScorePixmapLabel");
-        BlueScorePixmapLabel->setGeometry(QRect(833, 0, 131, 41));
+        BlueScoreTextLabel = new QLabel(Game);
+        BlueScoreTextLabel->setObjectName("BlueScoreTextLabel");
+        BlueScoreTextLabel->setGeometry(QRect(833, 0, 131, 41));
+        BlueScoreTextLabel->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 255);\n"
+"font: italic 24pt \"Monotype Corsiva\";\n"
+"text-decoration: underline;"));
+        BlueScoreTextLabel->setAlignment(Qt::AlignCenter);
         BlueScoreLabel = new QLabel(Game);
         BlueScoreLabel->setObjectName("BlueScoreLabel");
         BlueScoreLabel->setGeometry(QRect(964, 0, 60, 41));
@@ -65,9 +73,9 @@ public:
     {
         Game->setWindowTitle(QCoreApplication::translate("Game", "Form", nullptr));
         GameSettingButton->setText(QCoreApplication::translate("Game", "Setting", nullptr));
-        RedScorePixmapLabel->setText(QString());
+        RedScoreTextLabel->setText(QCoreApplication::translate("Game", "Score:", nullptr));
         RedScoreLabel->setText(QString());
-        BlueScorePixmapLabel->setText(QString());
+        BlueScoreTextLabel->setText(QCoreApplication::translate("Game", "Score:", nullptr));
         BlueScoreLabel->setText(QString());
     } // retranslateUi
 

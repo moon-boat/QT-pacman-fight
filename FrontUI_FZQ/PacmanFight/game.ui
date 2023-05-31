@@ -39,7 +39,7 @@ QPushButton::hover{
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="RedScorePixmapLabel">
+  <widget class="QLabel" name="RedScoreTextLabel">
    <property name="geometry">
     <rect>
      <x>130</x>
@@ -48,8 +48,16 @@ QPushButton::hover{
      <height>41</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 0, 0);
+font: italic 24pt &quot;Monotype Corsiva&quot;;
+text-decoration: underline;</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>Score:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="RedScoreLabel">
@@ -65,7 +73,7 @@ QPushButton::hover{
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="BlueScorePixmapLabel">
+  <widget class="QLabel" name="BlueScoreTextLabel">
    <property name="geometry">
     <rect>
      <x>833</x>
@@ -74,8 +82,16 @@ QPushButton::hover{
      <height>41</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 255);
+font: italic 24pt &quot;Monotype Corsiva&quot;;
+text-decoration: underline;</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>Score:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="BlueScoreLabel">

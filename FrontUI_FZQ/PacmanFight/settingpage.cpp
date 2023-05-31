@@ -19,8 +19,6 @@ SettingPage::~SettingPage()
 void SettingPage::on_QuitButtonInSetting_clicked()
 {
     ui->QuitButtonInSetting->setAttribute(Qt::WA_UnderMouse, false);
-    QEvent HE(QEvent::HoverLeave);
-    QCoreApplication::sendEvent(ui->QuitButtonInSetting, &HE);
     close();
     emit shouldQuit(1);
 }
@@ -29,8 +27,6 @@ void SettingPage::on_QuitButtonInSetting_clicked()
 void SettingPage::on_ReturnParentInSetting_clicked()
 {
     ui->ReturnParentInSetting->setAttribute(Qt::WA_UnderMouse, false);
-    QEvent HE(QEvent::HoverLeave);
-    QCoreApplication::sendEvent(ui->ReturnParentInSetting, &HE);
     close();
 }
 
