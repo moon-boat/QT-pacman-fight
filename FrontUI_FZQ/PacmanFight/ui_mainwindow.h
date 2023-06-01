@@ -44,6 +44,7 @@ public:
         font.setBold(false);
         font.setItalic(false);
         StartGameButton->setFont(font);
+        StartGameButton->setFocusPolicy(Qt::StrongFocus);
         StartGameButton->setAutoFillBackground(false);
         StartGameButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-image: url(:/images/resources/blankBack.png);\n"

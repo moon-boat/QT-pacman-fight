@@ -107,6 +107,22 @@ text-decoration: underline;</string>
     <string/>
    </property>
   </widget>
+  <widget class="QGraphicsView" name="graphicsView">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1024</width>
+     <height>768</height>
+    </rect>
+   </property>
+  </widget>
+  <zorder>graphicsView</zorder>
+  <zorder>GameSettingButton</zorder>
+  <zorder>RedScoreTextLabel</zorder>
+  <zorder>RedScoreLabel</zorder>
+  <zorder>BlueScoreTextLabel</zorder>
+  <zorder>BlueScoreLabel</zorder>
  </widget>
  <resources/>
  <connections/>

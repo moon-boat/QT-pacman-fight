@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
@@ -25,6 +26,7 @@ public:
     QLabel *RedScoreLabel;
     QLabel *BlueScoreTextLabel;
     QLabel *BlueScoreLabel;
+    QGraphicsView *graphicsView;
 
     void setupUi(QWidget *Game)
     {
@@ -63,6 +65,15 @@ public:
         BlueScoreLabel = new QLabel(Game);
         BlueScoreLabel->setObjectName("BlueScoreLabel");
         BlueScoreLabel->setGeometry(QRect(964, 0, 60, 41));
+        graphicsView = new QGraphicsView(Game);
+        graphicsView->setObjectName("graphicsView");
+        graphicsView->setGeometry(QRect(0, 0, 1024, 768));
+        graphicsView->raise();
+        GameSettingButton->raise();
+        RedScoreTextLabel->raise();
+        RedScoreLabel->raise();
+        BlueScoreTextLabel->raise();
+        BlueScoreLabel->raise();
 
         retranslateUi(Game);
 

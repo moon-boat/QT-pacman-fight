@@ -51,3 +51,20 @@
 
     Score显示优化为 Text with Stylesheet，图片资源已从qrc删除  
     删除按钮样式更新功能中多余代码  
+
+## 2023年6月1日17:15:24
+
+更新内容：  
+
+    game.h(.cpp)  
+    增加QGraphicsView图形显示套件，用于图形显示（预期游戏界面背景也由QG.V.显示）  
+    增加testBullet测试类，用于测试图形界面（可按下键盘W键观看效果）  
+    增加QTimer计时器事件  
+    增加若干测试用函数，键盘输入功能已加入，目前仅用于测试  
+
+    界面结构：  
+        MainWindow
+        |   setting(1)
+        |   game
+        |   |   setting(2)
+        |   |   QGraphicsView
