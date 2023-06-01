@@ -314,7 +314,6 @@ Makefile: ../PacmanFight/PacmanFight.pro E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_6
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/features/qt_config.prf \
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/win32-g++/qmake.conf \
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/features/exclusive_builds.prf \
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/features/toolchain.prf \
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/features/default_pre.prf \
@@ -344,6 +343,7 @@ Makefile: ../PacmanFight/PacmanFight.pro E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_6
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/lib/Qt6Gui.prl \
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/lib/Qt6Core.prl \
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/lib/Qt6EntryPoint.prl \
+		.qmake.stash \
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/features/build_pass.prf \
 		../PacmanFight/resources.qrc
 	$(QMAKE) -o Makefile ..\PacmanFight\PacmanFight.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -591,7 +591,6 @@ E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/features/qt_functions.prf:
 E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/features/qt_config.prf:
 E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/win32-g++/qmake.conf:
 E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/features/spec_post.prf:
-.qmake.stash:
 E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/features/exclusive_builds.prf:
 E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/features/toolchain.prf:
 E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/features/default_pre.prf:
@@ -621,6 +620,7 @@ E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/lib/Qt6Widgets.prl:
 E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/lib/Qt6Gui.prl:
 E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/lib/Qt6Core.prl:
 E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/lib/Qt6EntryPoint.prl:
+.qmake.stash:
 E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/features/build_pass.prf:
 ../PacmanFight/resources.qrc:
 qmake: FORCE

@@ -68,3 +68,11 @@
         |   game
         |   |   setting(2)
         |   |   QGraphicsView
+
+## 2023年6月1日22:53:15
+
+更新内容：  
+
+    新增GameAbstractObject类，包装了QGraphicsItem，方便图形处理（可见game.h中testBullet的改动）  
+    删除了QG.V.的滚动条  
+    game.h中加入QList管理QG.Scene中的图形部件（后续应从后端继承类）  

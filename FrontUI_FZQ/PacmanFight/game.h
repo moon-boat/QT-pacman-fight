@@ -8,18 +8,18 @@
 #include <QGraphicsItem>
 #include "settingpage.h"
 #include "mainwindow.h"
+#include "gameabstractobject.h"
 
 namespace Ui {
 class Game;
 }
 
-class testBullet : public QGraphicsItem
+class testBullet : public GameAbstractObject
 {
 private:
-    QString icon_path = ":/images/resources/bullet.png";
+
 public:
-    QRectF boundingRect() const override;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
+    testBullet();
 };
 
 class Game : public QWidget
@@ -42,6 +42,7 @@ private:
     MainWindow *returnTo;
     SettingPage *sp;
     QTimer *time;
+    QList<GameAbstractObject*> objInScene;
     QGraphicsScene scene;
     int globalTime;
     void JustClose();

@@ -2,16 +2,10 @@
 #include "ui_game.h"
 #include "settingpage.h"
 
-QRectF testBullet::boundingRect() const
-{
-    qreal penWidth = 1;
-    return QRectF(0 - penWidth / 2, 0 - penWidth / 2, 4, 25);
-}
-
-void testBullet::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
-{
-    painter->drawImage(boundingRect(), QImage(icon_path));
-}
+QRectF testBulletBoundingRectangle(0, 0, 4, 25);
+QString testBulletPictureIconPath(":/images/resources/bullet.png");
+testBullet::testBullet(): GameAbstractObject(testBulletBoundingRectangle, testBulletPictureIconPath)
+{}
 
 Game::Game(QWidget *parent, QWidget *main) :
     QWidget(parent),
@@ -26,6 +20,8 @@ Game::Game(QWidget *parent, QWidget *main) :
     time->start(33);
     scene.setSceneRect(0, 0, 1024, 768);
     ui->graphicsView->setScene(&scene);
+    ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->show();
 }
 
@@ -35,6 +31,8 @@ Game::~Game()
     delete time;
     if (sp)
         delete sp;
+    for (auto iter: objInScene)
+        delete iter;
 }
 
 void Game::on_GameSettingButton_clicked()
@@ -73,7 +71,11 @@ void Game::keyPressEvent(QKeyEvent *event)
     if (event->key() == Qt::Key_W)
     {
         testBullet *tb = new testBullet;
-        tb->setPos(100 + 50 * cos(globalTime), 100 + 50 * sin(globalTime));
+        objInScene.append(tb);
+        char p[160] {};
+        itoa(objInScene.size(), p, 10);
+        ui->BlueScoreLabel->setText(p);
+        tb->setPos(100 + 100 * cos(globalTime), (100 + 100 * globalTime) % 768);
         scene.addItem(tb);
     }
 }
