@@ -1,25 +1,23 @@
 #ifndef BULLET_H
 #define BULLET_H
 
-#include <QGraphicsItem>
-#include <QPainter>
-#include <wall.h>
+#include <QPointF>
+#include "wall.h"
 
-class Bullet : public QGraphicsItem
+class Bullet
 {
 public:
-    Bullet(qreal x, qreal y, qreal angle,int dura);
-    QRectF boundingRect() const override;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
+    Bullet(QPointF _pos, qreal angle,int dura);
     //void advance(int phase) override;
     QPointF getPosition()const;
     int getdurability()const;
+    qreal getAngle()const;
     void setexist(bool f1);
     void collideWithWall(const Wall* wall);
 
+
 private:
-    qreal x;
-    qreal y;
+    QPointF pos;
     qreal angle;
     int durability;
     bool exist;

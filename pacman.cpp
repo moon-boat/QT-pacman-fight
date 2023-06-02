@@ -1,6 +1,6 @@
 #include <QGraphicsItem>
-#include <bean.h>
-#include <pacman.h>
+#include "bean.h"
+#include "pacman.h"
 
 //class Pacman : public QGraphicsItem
 //{
@@ -36,49 +36,32 @@
 //    int score;
 //};
 
-Pacman::Pacman()
+Pacman::Pacman(): pos(0, 0)
 {
     // 在构造函数中初始化 Pacman 对象的属性
     color=0;
-    x = 0.0;
-    y = 0.0;
     r= 0.0;
     gunAngle = 0.0;
     life = 10;
     score = 0;
 }
-Pacman::Pacman(int c,qreal X,qreal Y,qreal radius,qreal gunangle,int l,int s,QGraphicsItem *parent)
-    :color(c),x(X),y(Y),r(radius),gunAngle(gunangle),life(l),score(s),QGraphicsItem(parent)
+Pacman::Pacman(int c,QPointF _pos,qreal radius,qreal gunangle,int l,int s)
+    :color(c),pos(_pos),r(radius),gunAngle(gunangle),life(l),score(s)
 {
-    setFlag(ItemIsSelectable);
-}
-QRectF Pacman::boundingRect() const
-{
-    // 返回 Pacman 对象的边界矩形，用于碰撞检测和绘制
-    // 根据具体需求实现
+
 }
 
-void Pacman::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+bool Pacman::eatBean(const Bean* bean)
 {
-    // 在这里绘制 Pacman 对象的外观
-    // 根据具体需求实现
-}
-bool Pacman::eatBean(const Bean& bean)
-{
-    QPointF pacmanCenter(x, y);
-    QPointF beanCenter = bean.getPosition();
+    QPointF pacmanCenter(pos);
+    QPointF beanCenter = bean->getPosition();
     qreal distance = QLineF(pacmanCenter, beanCenter).length();
-    qreal sumOfRadii = r + bean.getRadius();
+    qreal sumOfRadii = r + bean->getRadius();
     return distance <= sumOfRadii;
 }
-qreal Pacman::getX() const
+QPointF Pacman::getPosition() const
 {
-    return x;
-}
-
-qreal Pacman::getY() const
-{
-    return y;
+    return pos;
 }
 
 qreal Pacman::getGunAngle() const
@@ -96,14 +79,9 @@ int Pacman::getScore() const
     return score;
 }
 
-void Pacman::setX(qreal x)
+void Pacman::setPosition(const QPointF& _pos)
 {
-    this->x = x;
-}
-
-void Pacman::setY(qreal y)
-{
-    this->y = y;
+    pos = _pos;
 }
 
 void Pacman::setGunAngle(qreal angle)

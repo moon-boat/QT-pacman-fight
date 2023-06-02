@@ -1,22 +1,18 @@
 #ifndef WALL_H
 #define WALL_H
 
-#include <QGraphicsItem>
+#include <QRectF>
 
-class Wall : public QGraphicsItem
+class Wall
 {
 public:
-    Wall(qreal startX, qreal startY, qreal endX, qreal endY, qreal angle, QGraphicsItem *parent = nullptr);
+    Wall(QRectF rec, qreal ang);
 
-    QRectF boundingRect() const override;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
-    QPointF getstart()const;
-    QPointF getend()const;
+    QRectF getRect() const;
     qreal getangle()const;
 
 private:
-    QPointF start;
-    QPointF end;
+    QRectF rect;
     qreal angle;
 };
 
