@@ -90,5 +90,14 @@
     game.ui  
     优化scoreLabel显示效果，与ScoreTextLabel显示效果统一，目前测试使用BlueScoreLabel显示全部Item数目  
     
-    game.h  
+    game.h
     删除了上一次更新的QList，直接使用scene.items()即可  
+
+## 2023年6月2日20:50:37
+
+更新内容：  
+
+    GameAbstractObject.h  
+    开放修改pos, Direction的接口  
+    加入enum ObjectType标记派生类类型  
+    

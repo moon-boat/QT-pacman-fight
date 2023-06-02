@@ -6,7 +6,7 @@ int frameUpdateSeconds = 33;
 
 QRectF testBulletBoundingRectangle(0, 0, 4, 25);
 QString testBulletPictureIconPath(":/images/resources/bullet.png");
-testBullet::testBullet(): GameAbstractObject(testBulletBoundingRectangle, testBulletPictureIconPath, QPointF(100, 100), 0.2, 45)
+testBullet::testBullet(): GameAbstractObject(testBulletBoundingRectangle, testBulletPictureIconPath, bullet, QPointF(0, 0), 0.2, 45)
 {}
 
 void testBullet::update()
