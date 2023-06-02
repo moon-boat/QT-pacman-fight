@@ -24,7 +24,7 @@ void GameAbstractObject::paint(QPainter *painter, const QStyleOptionGraphicsItem
 
     painter->resetTransform();
     painter->translate(pos.x(), pos.y());
-    painter->rotate(90 + direction * 180 / acos(-1));
+    painter->rotate(direction * 180 / acos(-1));
     painter->drawImage(bounding, QImage(icon_path));
     painter->resetTransform();
 }
@@ -52,4 +52,9 @@ QPointF& GameAbstractObject::setPosition()
 qreal& GameAbstractObject::setDirection()
 {
     return direction;
+}
+
+QPointF GameAbstractObject::getPosition() const
+{
+    return pos;
 }

@@ -1,10 +1,10 @@
 #ifndef BEAN_OBJECT_H
 #define BEAN_OBJECT_H
 
-
 #include "gameabstractobject.h"
 #include "bean.h"
-class bean_object : public GameAbstractObject ,public Bean
+
+class bean_object : public GameAbstractObject, public Bean
 {
 
 private:

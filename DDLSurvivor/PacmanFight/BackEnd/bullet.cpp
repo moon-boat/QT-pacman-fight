@@ -27,6 +27,10 @@ int Bullet::getdurability()const{
 void Bullet::setexist(bool f1){
     exist=f1;
 }
+void Bullet::set_pos(const QPointF &_pos)
+{
+    pos = _pos;
+}
 void Bullet::collideWithWall(const Wall* wall){
     if(wall->getRect().contains(pos))
     {
@@ -35,7 +39,7 @@ void Bullet::collideWithWall(const Wall* wall){
         if(durability<=0)exist=false;
     }
 }
-qreal getAngle()const{
+qreal Bullet::getAngle() const{
     return angle;
 }
 

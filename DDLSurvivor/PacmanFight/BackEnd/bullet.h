@@ -12,6 +12,7 @@ public:
     QPointF getPosition()const;
     int getdurability()const;
     qreal getAngle()const;
+    void set_pos(const QPointF &_pos);
     void setexist(bool f1);
     void collideWithWall(const Wall* wall);
 

@@ -8,7 +8,7 @@ class Pacman
 {
 public:
     Pacman();
-    Pacman(int c, QPointF _pos ,qreal radius,qreal gunangle,int l,int s);
+    Pacman(int c, QPointF _pos, qreal radius, qreal gunangle, int l, int s);
 
     bool eatBean(const Bean* bean);
 

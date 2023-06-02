@@ -100,4 +100,23 @@
     GameAbstractObject.h  
     开放修改pos, Direction的接口  
     加入enum ObjectType标记派生类类型  
-    
+
+## 2023年6月3日02:02:57
+
+更新内容：  
+
+    修复了BackEnd中的编程错误若干（不小于5处），优化了编程格式  
+    新增功能————pacman_object中的攻击cd  
+    完成全部red pacman和blue pacman移动、攻击按键事件捕获和处理，并使用QTimer进行了处理优化  
+    |   red pacman 按W前进，按A逆时针旋转，按D顺时针旋转，按S发射子弹  
+    |   blue pacman 按Up（上箭头，下面同理）前进，按Left逆时针旋转，按Right顺时针旋转，按Down发射子弹  
+    为适配GameAbstractObject基类的paint函数逻辑，更新了许多QRectF的格式，对应更新了resources中图片的形状，统一以右侧为前进方向（初始0度方向），目前除bullet外统一使用(-w/2, -h/2, w, h)的格式绘制  
+    文档结构已经更新完毕，新的branch: Debug已经发布到github  
+    大幅降低了Pacman.png的分辨率，否则程序运行将会产生严重卡顿（推测为图形压缩的消耗）  
+
+下一步更新内容：  
+
+    墙的侧面交互问题  
+    豆子的随机生成  
+    场景内物体的碰撞和交互  
+    地图编码设计（拓展内容：地图编辑器）  

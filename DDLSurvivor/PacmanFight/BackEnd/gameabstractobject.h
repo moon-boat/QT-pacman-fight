@@ -20,6 +20,7 @@ private:
     qreal velocity, direction;
 
 protected:
+    QPointF getPosition() const;
     QPointF& setPosition();
     qreal& setDirection();
 

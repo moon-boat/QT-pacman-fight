@@ -33,9 +33,11 @@ public:
         if (Game->objectName().isEmpty())
             Game->setObjectName("Game");
         Game->resize(1024, 768);
+        Game->setFocusPolicy(Qt::StrongFocus);
         GameSettingButton = new QPushButton(Game);
         GameSettingButton->setObjectName("GameSettingButton");
         GameSettingButton->setGeometry(QRect(0, 0, 131, 41));
+        GameSettingButton->setFocusPolicy(Qt::NoFocus);
         GameSettingButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-image: url(:/images/resources/blankBack.png);\n"
 "color: rgb(255, 0, 4);\n"
@@ -72,6 +74,7 @@ public:
         graphicsView = new QGraphicsView(Game);
         graphicsView->setObjectName("graphicsView");
         graphicsView->setGeometry(QRect(0, 0, 1024, 768));
+        graphicsView->setFocusPolicy(Qt::NoFocus);
         graphicsView->raise();
         GameSettingButton->raise();
         RedScoreTextLabel->raise();

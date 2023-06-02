@@ -3,10 +3,11 @@
 
 #include "gameabstractobject.h"
 #include "wall.h"
-class wall_object:public GameAbstractObject ,public Wall
+
+class wall_object:public GameAbstractObject, public Wall
 {
 public:
-    wall_object(QPointF _pos,QRectF _rec,qreal _angle);
+    wall_object(QPointF _pos, QRectF _rec, qreal _angle);
 };
 
 #endif // WALL_OBJECT_H

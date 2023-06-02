@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../PacmanFight/gameabstractobject.h"
+#include "../../PacmanFight/BackEnd/gameabstractobject.h"
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'gameabstractobject.h' doesn't include <QObject>."

@@ -26,17 +26,19 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 namespace {
 struct qt_meta_stringdata_Game_t {
-    uint offsetsAndSizes[20];
+    uint offsetsAndSizes[24];
     char stringdata0[5];
     char stringdata1[29];
     char stringdata2[1];
     char stringdata3[14];
     char stringdata4[11];
     char stringdata5[6];
-    char stringdata6[12];
-    char stringdata7[2];
-    char stringdata8[13];
-    char stringdata9[25];
+    char stringdata6[16];
+    char stringdata7[12];
+    char stringdata8[2];
+    char stringdata9[13];
+    char stringdata10[25];
+    char stringdata11[11];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_Game_t::offsetsAndSizes) + ofs), len 
@@ -48,10 +50,12 @@ Q_CONSTINIT static const qt_meta_stringdata_Game_t qt_meta_stringdata_Game = {
         QT_MOC_LITERAL(35, 13),  // "keyPressEvent"
         QT_MOC_LITERAL(49, 10),  // "QKeyEvent*"
         QT_MOC_LITERAL(60, 5),  // "event"
-        QT_MOC_LITERAL(66, 11),  // "recQuitSign"
-        QT_MOC_LITERAL(78, 1),  // "a"
-        QT_MOC_LITERAL(80, 12),  // "timeContinue"
-        QT_MOC_LITERAL(93, 24)   // "BlueLabelTestTextSetting"
+        QT_MOC_LITERAL(66, 15),  // "keyReleaseEvent"
+        QT_MOC_LITERAL(82, 11),  // "recQuitSign"
+        QT_MOC_LITERAL(94, 1),  // "a"
+        QT_MOC_LITERAL(96, 12),  // "timeContinue"
+        QT_MOC_LITERAL(109, 24),  // "BlueLabelTestTextSetting"
+        QT_MOC_LITERAL(134, 10)   // "keySlotOut"
     },
     "Game",
     "on_GameSettingButton_clicked",
@@ -59,10 +63,12 @@ Q_CONSTINIT static const qt_meta_stringdata_Game_t qt_meta_stringdata_Game = {
     "keyPressEvent",
     "QKeyEvent*",
     "event",
+    "keyReleaseEvent",
     "recQuitSign",
     "a",
     "timeContinue",
-    "BlueLabelTestTextSetting"
+    "BlueLabelTestTextSetting",
+    "keySlotOut"
 };
 #undef QT_MOC_LITERAL
 } // unnamed namespace
@@ -73,7 +79,7 @@ Q_CONSTINIT static const uint qt_meta_data_Game[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -81,16 +87,20 @@ Q_CONSTINIT static const uint qt_meta_data_Game[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   44,    2, 0x08,    1 /* Private */,
-       3,    1,   45,    2, 0x08,    2 /* Private */,
-       6,    1,   48,    2, 0x08,    4 /* Private */,
-       8,    0,   51,    2, 0x08,    6 /* Private */,
-       9,    0,   52,    2, 0x08,    7 /* Private */,
+       1,    0,   56,    2, 0x08,    1 /* Private */,
+       3,    1,   57,    2, 0x08,    2 /* Private */,
+       6,    1,   60,    2, 0x08,    4 /* Private */,
+       7,    1,   63,    2, 0x08,    6 /* Private */,
+       9,    0,   66,    2, 0x08,    8 /* Private */,
+      10,    0,   67,    2, 0x08,    9 /* Private */,
+      11,    0,   68,    2, 0x08,   10 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 4,    5,
-    QMetaType::Void, QMetaType::Bool,    7,
+    QMetaType::Void, 0x80000000 | 4,    5,
+    QMetaType::Void, QMetaType::Bool,    8,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -111,12 +121,17 @@ Q_CONSTINIT const QMetaObject Game::staticMetaObject = { {
         // method 'keyPressEvent'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QKeyEvent *, std::false_type>,
+        // method 'keyReleaseEvent'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QKeyEvent *, std::false_type>,
         // method 'recQuitSign'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<bool, std::false_type>,
         // method 'timeContinue'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'BlueLabelTestTextSetting'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'keySlotOut'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -130,9 +145,11 @@ void Game::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         switch (_id) {
         case 0: _t->on_GameSettingButton_clicked(); break;
         case 1: _t->keyPressEvent((*reinterpret_cast< std::add_pointer_t<QKeyEvent*>>(_a[1]))); break;
-        case 2: _t->recQuitSign((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
-        case 3: _t->timeContinue(); break;
-        case 4: _t->BlueLabelTestTextSetting(); break;
+        case 2: _t->keyReleaseEvent((*reinterpret_cast< std::add_pointer_t<QKeyEvent*>>(_a[1]))); break;
+        case 3: _t->recQuitSign((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
+        case 4: _t->timeContinue(); break;
+        case 5: _t->BlueLabelTestTextSetting(); break;
+        case 6: _t->keySlotOut(); break;
         default: ;
         }
     }
@@ -157,13 +174,13 @@ int Game::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 7)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 5;
+        _id -= 7;
     }
     return _id;
 }
