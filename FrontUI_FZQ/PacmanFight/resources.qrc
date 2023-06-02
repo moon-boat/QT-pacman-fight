@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>resources/mainback.png</file>
+        <file>resources/pacman.png</file>
+        <file>resources/score.png</file>
+        <file>resources/bullet.png</file>
+        <file>resources/blankBack.png</file>
+    </qresource>
+</RCC>
