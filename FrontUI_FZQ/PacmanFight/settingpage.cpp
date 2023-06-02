@@ -28,5 +28,6 @@ void SettingPage::on_ReturnParentInSetting_clicked()
 {
     ui->ReturnParentInSetting->setAttribute(Qt::WA_UnderMouse, false);
     close();
+    emit timeContinue(1);
 }
 

@@ -930,10 +930,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "E:\\ProgramFiles\\Github\\QT_TeamWork\\QT-pacman-fight\\FrontUI_FZQ\\build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\ui_mainwindow.h"
+        "E:\\ProgramFiles\\Github\\QT_TeamWork\\QT-pacman-fight\\FrontUI_FZQ\\build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\ui_game.h"
     ],
     "directory": "E:/ProgramFiles/Github/QT_TeamWork/QT-pacman-fight/FrontUI_FZQ/build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "E:/ProgramFiles/Github/QT_TeamWork/QT-pacman-fight/FrontUI_FZQ/build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/ui_mainwindow.h"
+    "file": "E:/ProgramFiles/Github/QT_TeamWork/QT-pacman-fight/FrontUI_FZQ/build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/ui_game.h"
 },
 {
     "arguments": [
@@ -1074,9 +1074,9 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "E:\\ProgramFiles\\Github\\QT_TeamWork\\QT-pacman-fight\\FrontUI_FZQ\\build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\ui_game.h"
+        "E:\\ProgramFiles\\Github\\QT_TeamWork\\QT-pacman-fight\\FrontUI_FZQ\\build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\ui_mainwindow.h"
     ],
     "directory": "E:/ProgramFiles/Github/QT_TeamWork/QT-pacman-fight/FrontUI_FZQ/build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "E:/ProgramFiles/Github/QT_TeamWork/QT-pacman-fight/FrontUI_FZQ/build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/ui_game.h"
+    "file": "E:/ProgramFiles/Github/QT_TeamWork/QT-pacman-fight/FrontUI_FZQ/build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/ui_mainwindow.h"
 }
 ]

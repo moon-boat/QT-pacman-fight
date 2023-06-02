@@ -22,6 +22,7 @@ private slots:
 
 signals:
     void shouldQuit(bool a);
+    void timeContinue(bool a);
 private:
     Ui::SettingPage *ui;
 };

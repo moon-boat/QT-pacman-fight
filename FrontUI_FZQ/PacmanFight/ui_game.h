@@ -55,6 +55,8 @@ public:
         RedScoreLabel = new QLabel(Game);
         RedScoreLabel->setObjectName("RedScoreLabel");
         RedScoreLabel->setGeometry(QRect(260, 0, 60, 41));
+        RedScoreLabel->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);\n"
+"font: italic 24pt \"Monotype Corsiva\";"));
         BlueScoreTextLabel = new QLabel(Game);
         BlueScoreTextLabel->setObjectName("BlueScoreTextLabel");
         BlueScoreTextLabel->setGeometry(QRect(833, 0, 131, 41));
@@ -65,6 +67,8 @@ public:
         BlueScoreLabel = new QLabel(Game);
         BlueScoreLabel->setObjectName("BlueScoreLabel");
         BlueScoreLabel->setGeometry(QRect(964, 0, 60, 41));
+        BlueScoreLabel->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 255);\n"
+"font: italic 24pt \"Monotype Corsiva\";"));
         graphicsView = new QGraphicsView(Game);
         graphicsView->setObjectName("graphicsView");
         graphicsView->setGeometry(QRect(0, 0, 1024, 768));
