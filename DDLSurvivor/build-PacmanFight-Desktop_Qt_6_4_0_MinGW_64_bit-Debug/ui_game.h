@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
@@ -27,6 +28,9 @@ public:
     QLabel *BlueScoreTextLabel;
     QLabel *BlueScoreLabel;
     QGraphicsView *graphicsView;
+    QProgressBar *RedLifeBar;
+    QProgressBar *BlueLifeBar;
+    QLabel *TimeCounter;
 
     void setupUi(QWidget *Game)
     {
@@ -75,12 +79,54 @@ public:
         graphicsView->setObjectName("graphicsView");
         graphicsView->setGeometry(QRect(0, 0, 1024, 768));
         graphicsView->setFocusPolicy(Qt::NoFocus);
+        RedLifeBar = new QProgressBar(Game);
+        RedLifeBar->setObjectName("RedLifeBar");
+        RedLifeBar->setGeometry(QRect(330, 10, 118, 23));
+        RedLifeBar->setStyleSheet(QString::fromUtf8("QProgressBar{\n"
+"	color: rgb(242, 255, 124);\n"
+"	background-color: rgb(0, 0, 0);\n"
+"	font: 700 9pt \"Microsoft YaHei UI\";\n"
+"}\n"
+"QProgressBar::chunk{\n"
+"	background-color: rgb(255, 93, 61);\n"
+"}\n"
+""));
+        RedLifeBar->setMaximum(10);
+        RedLifeBar->setValue(1);
+        RedLifeBar->setAlignment(Qt::AlignCenter);
+        BlueLifeBar = new QProgressBar(Game);
+        BlueLifeBar->setObjectName("BlueLifeBar");
+        BlueLifeBar->setGeometry(QRect(700, 10, 118, 23));
+        BlueLifeBar->setStyleSheet(QString::fromUtf8("QProgressBar{\n"
+"	color: rgb(242, 255, 124);\n"
+"	background-color: rgb(0, 0, 0);\n"
+"	font: 700 9pt \"Microsoft YaHei UI\";\n"
+"}\n"
+"QProgressBar::chunk{\n"
+"	background-color: rgb(80, 132, 255);\n"
+"}\n"
+""));
+        BlueLifeBar->setMaximum(10);
+        BlueLifeBar->setValue(2);
+        BlueLifeBar->setAlignment(Qt::AlignCenter);
+        TimeCounter = new QLabel(Game);
+        TimeCounter->setObjectName("TimeCounter");
+        TimeCounter->setGeometry(QRect(500, 0, 150, 41));
+        TimeCounter->setStyleSheet(QString::fromUtf8("QLabel{\n"
+"background-image: url(:/images/resources/blankBack.png);\n"
+"	color: rgb(0, 0, 127);\n"
+"font: 16pt \"Segoe Print\";\n"
+"}"));
+        TimeCounter->setAlignment(Qt::AlignCenter);
         graphicsView->raise();
         GameSettingButton->raise();
         RedScoreTextLabel->raise();
         RedScoreLabel->raise();
         BlueScoreTextLabel->raise();
         BlueScoreLabel->raise();
+        RedLifeBar->raise();
+        BlueLifeBar->raise();
+        TimeCounter->raise();
 
         retranslateUi(Game);
 
@@ -95,6 +141,9 @@ public:
         RedScoreLabel->setText(QString());
         BlueScoreTextLabel->setText(QCoreApplication::translate("Game", "Score:", nullptr));
         BlueScoreLabel->setText(QString());
+        RedLifeBar->setFormat(QCoreApplication::translate("Game", "%v/%m", nullptr));
+        BlueLifeBar->setFormat(QCoreApplication::translate("Game", "%v/%m", nullptr));
+        TimeCounter->setText(QCoreApplication::translate("Game", "01:00", nullptr));
     } // retranslateUi
 
 };

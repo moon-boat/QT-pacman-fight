@@ -48,6 +48,7 @@ private slots:
     void BlueLabelTextSetting();
     void keySlotOut();
     void reBorn(bool a);
+    void setTimeCounter();
 
 private:
     Ui::Game *ui;
