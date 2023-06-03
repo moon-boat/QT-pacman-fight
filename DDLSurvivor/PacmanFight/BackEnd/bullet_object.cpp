@@ -1,6 +1,6 @@
 #include "bullet_object.h"
 
-QRectF bullet_size{0,0,25,4};
+QRectF bullet_size{-25,-4,25,4};
 QString bullet_path{":/images/resources/bullet.png"};
 
 bullet_object::bullet_object(QPointF _pos,qreal _angle):

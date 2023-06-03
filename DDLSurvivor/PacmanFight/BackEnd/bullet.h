@@ -2,6 +2,7 @@
 #define BULLET_H
 
 #include <QPointF>
+#include <QDebug>
 #include "wall.h"
 
 class Bullet

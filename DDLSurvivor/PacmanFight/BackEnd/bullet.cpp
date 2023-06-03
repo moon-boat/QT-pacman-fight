@@ -36,11 +36,20 @@ void Bullet::collideWithWall(const Wall* wall){
     bounding.moveTo(wall->getPos());
     if (bounding.contains(pos))
     {
-        qreal top = bounding.top(), bottom = bounding.bottom(), left = bounding.left(), right = bounding.right();
-        qreal dis[4] {top - pos.y(), pos.y() - bottom, pos.x() - left, right - pos.x()};
-        qreal closest = *std::min_element(dis, dis + 4);
-        bool collideWithVertical = closest == dis[0] or closest == dis[1];
-        angle = 2 * (collideWithVertical ? 0 : 90) - angle;
+        qreal dx = cos(angle * acos(-1) / 180), dy = sin(angle * acos(-1) / 180);
+        if (dx == 0)
+            angle = - angle;
+        else if (dy == 0)
+            angle = 180 - angle;
+        else
+        {
+            qreal tarHorizon = (dy > 0 ? bounding.bottom() : bounding.top());
+            qreal tarHoriX = (pos.y() - tarHorizon) * dx / dy + pos.x();
+            qreal left = bounding.left(), right = bounding.right();
+            bool collideWithHorizonal = ((tarHoriX >= left and tarHoriX <= right) ? true : false);
+            qDebug() << tarHorizon << " " << dx << dy << pos.x() << tarHoriX << " " << left << " " << right << "\n";
+            angle = 2 * (collideWithHorizonal ? 0 : 90) - angle;
+        }
         durability -= 1;
         if (durability <= 0)
             exist = false;

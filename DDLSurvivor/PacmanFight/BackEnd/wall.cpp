@@ -2,7 +2,7 @@
 #include <QPainter>
 
 Wall::Wall(QRectF rec, QPointF _pos)
-    : rect(rec), pos(_pos)
+    : pos(_pos), rect(rec)
 {
 }
 QRectF Wall::getRect() const

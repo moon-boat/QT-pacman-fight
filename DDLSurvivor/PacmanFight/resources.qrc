@@ -5,5 +5,10 @@
         <file>resources/score.png</file>
         <file>resources/bullet.png</file>
         <file>resources/blankBack.png</file>
+        <file>resources/bean.png</file>
+        <file>resources/wall(1).png</file>
+        <file>resources/wall(2).png</file>
+        <file>resources/wall(3).png</file>
+        <file>resources/wall(4).png</file>
     </qresource>
 </RCC>

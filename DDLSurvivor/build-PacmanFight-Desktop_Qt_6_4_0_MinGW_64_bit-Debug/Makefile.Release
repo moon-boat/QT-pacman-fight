@@ -155,8 +155,13 @@ compiler_rcc_clean:
 release/qrc_resources.cpp: ../PacmanFight/resources.qrc \
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/bin/rcc.exe \
 		../PacmanFight/resources/score.png \
+		../PacmanFight/resources/bean.png \
 		../PacmanFight/resources/blankBack.png \
+		../PacmanFight/resources/wall(4).png \
 		../PacmanFight/resources/pacman.png \
+		../PacmanFight/resources/wall(1).png \
+		../PacmanFight/resources/wall(3).png \
+		../PacmanFight/resources/wall(2).png \
 		../PacmanFight/resources/mainback.png \
 		../PacmanFight/resources/bullet.png
 	E:\ProgramFiles\CppGUI\qt\6.4.0\mingw_64\bin\rcc.exe -name resources --no-zstd ..\PacmanFight\resources.qrc -o release\qrc_resources.cpp
@@ -2152,7 +2157,10 @@ release/pacman.o: ../PacmanFight/BackEnd/pacman.cpp E:/ProgramFiles/CppGUI/qt/6.
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/include/QtGui/qpixelformat.h \
 		../PacmanFight/BackEnd/bean.h \
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/include/QtCore/QPointF \
-		../PacmanFight/BackEnd/pacman.h
+		../PacmanFight/BackEnd/pacman.h \
+		../PacmanFight/BackEnd/bullet.h \
+		../PacmanFight/BackEnd/wall.h \
+		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/include/QtCore/QRectF
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\pacman.o ..\PacmanFight\BackEnd\pacman.cpp
 
 release/pacman_object.o: ../PacmanFight/BackEnd/pacman_object.cpp ../PacmanFight/BackEnd/pacman_object.h \
@@ -2279,7 +2287,9 @@ release/pacman_object.o: ../PacmanFight/BackEnd/pacman_object.cpp ../PacmanFight
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/include/QtGui/qfontmetrics.h \
 		../PacmanFight/BackEnd/pacman.h \
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/include/QtCore/QPointF \
-		../PacmanFight/BackEnd/bean.h
+		../PacmanFight/BackEnd/bean.h \
+		../PacmanFight/BackEnd/bullet.h \
+		../PacmanFight/BackEnd/wall.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\pacman_object.o ..\PacmanFight\BackEnd\pacman_object.cpp
 
 release/wall.o: ../PacmanFight/BackEnd/wall.cpp ../PacmanFight/BackEnd/wall.h \
