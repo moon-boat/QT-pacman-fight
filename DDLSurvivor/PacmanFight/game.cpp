@@ -40,6 +40,7 @@ Game::Game(QWidget *parent, QWidget *main):
     connect(keyTime, &QTimer::timeout, this, &Game::keySlotOut);
     connect(MainTime, &QTimer::timeout, this, &Game::yieldBean);
     connect(MainTime, &QTimer::timeout, this, &Game::setTimeCounter);
+    connect(MainTime, &QTimer::timeout, this, &Game::sendPos);
 
     MainTime->start(frameUpdateSeconds);
     scene.setSceneRect(0, 0, 1024, 768);
@@ -49,8 +50,8 @@ Game::Game(QWidget *parent, QWidget *main):
     blue = new pacman_object(1);
 
     ghost_object *ghost1 = new ghost_object(QPointF(400, 400), 0);
-    connect(MainTime, &QTimer::timeout, ghost1, &ghost_object::update);
-
+    connect(MainTime, &QTimer::timeout, this, &Game::sendPos);
+    connect(this, &Game::passPos, ghost1, &ghost_object::update, Qt::DirectConnection);
     wall_object *testWall = new wall_object(QPointF(400, 400), QRectF(0, 0, 200, 40));
 
     scene.addItem(testWall);
@@ -122,6 +123,11 @@ void Game::recQuitSign(bool a)
 {
     if (a)
         JustClose();
+}
+
+void Game::sendPos()
+{
+    emit passPos(red->Pacman::getPosition(), blue->Pacman::getPosition());
 }
 
 MainWindow* Game::MainWin() const
@@ -264,7 +270,6 @@ void Game::BlueLabelTextSetting()
 void Game::yieldBean()
 {
     srand(clock());
-    qDebug() << totalBeans;
     if ((rand() % 100 < beanYieldRate) && (totalBeans <= BeansLimit))
     {
         QTransform trans(1, 0, 0, 0, 1, 0, 0, 0, 1);
@@ -293,7 +298,6 @@ void Game::yieldBean()
             bt = Small;
             break;
         }
-        qDebug() << bt << " " << nx << " " << ny;
         bean_object *nb = new bean_object(bt, QPointF(nx, ny));
         scene.addItem(nb);
         totalBeans++;

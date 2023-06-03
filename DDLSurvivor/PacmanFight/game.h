@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QTimer>
 #include <QList>
+#include <QPointF>
 #include <QKeyEvent>
 #include <QGraphicsScene>
 #include <QGraphicsItem>
@@ -39,6 +40,9 @@ public:
 
     void sceneUpdator();
 
+signals:
+    void passPos(const QPointF& RED, const QPointF& BLUE);
+
 private slots:
     void on_GameSettingButton_clicked();
     void keyPressEvent(QKeyEvent *event);
@@ -51,6 +55,7 @@ private slots:
     void reBorn(bool a);
     void setTimeCounter();
     void yieldBean();
+    void sendPos();
 
 private:
     Ui::Game *ui;

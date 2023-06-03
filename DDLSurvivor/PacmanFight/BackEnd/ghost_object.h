@@ -8,10 +8,13 @@
 class ghost_object: public GameAbstractObject, public Ghost
 {
 public:
-    ghost_object(QPointF _pos,qreal _angle);
+    ghost_object(const QPointF& _pos,qreal _angle);
+    qreal chooseAngle(const QPointF& red, const QPointF& blue);
     void set_pos();
-    void set_angle();
-    void update();
+    void set_angle(const QPointF& red, const QPointF& blue);
+
+public slots:
+    void update(const QPointF& red, const QPointF& blue);
 };
 
 
