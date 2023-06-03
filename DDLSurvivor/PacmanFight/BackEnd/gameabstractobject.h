@@ -7,7 +7,7 @@
 #include <QRectF>
 #include <QPainter>
 
-enum ObjectType {bullet, pacman, bean, wall};
+enum ObjectType {bullet, pacman, bean, wall, ghost};
 
 class GameAbstractObject : public QObject, public QGraphicsItem
 {
