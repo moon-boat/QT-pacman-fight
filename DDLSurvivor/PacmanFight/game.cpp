@@ -6,6 +6,7 @@ int frameUpdateSeconds = 33;
 qreal pacmanWalkLength = 0.03;
 qreal pacmanRotation = 0.06;
 int shootingLimit = 10;
+int timeLimit = 30000 / frameUpdateSeconds; // 30s的demo测试数据
 
 QRectF testBulletBoundingRectangle(0, 0, 25, 4);
 QString testBulletPictureIconPath(":/images/resources/bullet.png");
@@ -34,6 +35,7 @@ Game::Game(QWidget *parent, QWidget *main):
     connect(time, &QTimer::timeout, this, &Game::RedLabelTextSetting);
     connect(time, &QTimer::timeout, this, &Game::BlueLabelTextSetting);
     connect(keyTime, &QTimer::timeout, this, &Game::keySlotOut);
+    connect(time, &QTimer::timeout, this, &Game::setTimeCounter);
 
     time->start(frameUpdateSeconds);
     scene.setSceneRect(0, 0, 1024, 768);
@@ -136,10 +138,31 @@ void Game::timeContinue()
     time->start(frameUpdateSeconds);
 }
 
+void Game::setTimeCounter()
+{
+    int diff = (timeLimit - globalTime) / 30;
+    int min = diff / 60, sec = diff % 60;
+    char p[12] {};
+    itoa(min, p, 10);
+    QString res(p);
+    itoa(sec, p, 10);
+    res += ":";
+    res += p;
+    ui->TimeCounter->setText(res);
+}
+
 void Game::sceneUpdator()
 {
     globalTime++;
-
+    if (globalTime >= timeLimit)
+    {
+        if (red->getScore() > blue->getScore())
+            gameOver(0);
+        else if (red->getScore() < blue->getScore())
+            gameOver(1);
+        gameOver(-1);
+        time->stop();
+    }
     for (int i = 0; i < scene.items().length(); i++)
     {
         auto iter = scene.items().at(i);
@@ -217,6 +240,9 @@ void Game::RedLabelTextSetting()
     char p[120] {};
     itoa(red->getScore(), p, 10);
     ui->RedScoreLabel->setText(p);
+    ui->RedLifeBar->setValue(red->getLife());
+    ui->RedLifeBar->setMaximum(10);
+
 }
 
 void Game::BlueLabelTextSetting()
@@ -224,6 +250,9 @@ void Game::BlueLabelTextSetting()
     char p[120] {};
     itoa(blue->getScore(), p, 10);
     ui->BlueScoreLabel->setText(p);
+    ui->BlueLifeBar->setValue(blue->getLife());
+    ui->BlueLifeBar->setMaximum(10);
+
 }
 
 void Game::keyPressEvent(QKeyEvent *event)
@@ -286,8 +315,8 @@ void Game::keySlotOut()
                 red->lastShooting() = globalTime;
                 pos = red->Pacman::getPosition();
                 angle = red->getGunAngle() * acos(-1) / 180;
-                pos.rx() += (red->getR() + 1) * cos(angle);
-                pos.ry() += (red->getR() + 1) * sin(angle);
+                pos.rx() += (red->getR() + 10) * cos(angle);
+                pos.ry() += (red->getR() + 10) * sin(angle);
                 angle = red->getGunAngle();
                 ob = new bullet_object(pos, angle);
                 connect(time, &QTimer::timeout, ob, &bullet_object::update);
@@ -327,8 +356,8 @@ void Game::keySlotOut()
                 blue->lastShooting() = globalTime;
                 pos = blue->Pacman::getPosition();
                 angle = blue->getGunAngle() * acos(-1) / 180;
-                pos.rx() += (blue->getR() + 1) * cos(angle);
-                pos.ry() += (blue->getR() + 1) * sin(angle);
+                pos.rx() += (blue->getR() + 10) * cos(angle);
+                pos.ry() += (blue->getR() + 10) * sin(angle);
                 angle = blue->getGunAngle();
                 ob = new bullet_object(pos, angle);
                 connect(time, &QTimer::timeout, ob, &bullet_object::update);

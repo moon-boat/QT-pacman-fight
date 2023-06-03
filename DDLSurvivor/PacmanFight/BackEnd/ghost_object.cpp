@@ -2,7 +2,7 @@
 #include <QRandomGenerator>
 
 QRectF ghost_size{-30,-30,60,60};
-QString ghost_path{":/images/resources/bean.png"};
+QString ghost_path{":/images/resources/ghost.png"};
 
 ghost_object::ghost_object(QPointF _pos,qreal _angle):
     GameAbstractObject(ghost_size, ghost_path, ghost, _pos, 0.03,_angle),

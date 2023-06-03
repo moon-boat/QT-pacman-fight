@@ -29,7 +29,11 @@ HEADERS += game.h \
            BackEnd/pacman.h \
            BackEnd/pacman_object.h \
            BackEnd/wall.h \
-           BackEnd/wall_object.h
+           BackEnd/wall_object.h \
+           ui_game.h \
+           ui_gameoverwidget.h \
+           ui_mainwindow.h \
+           ui_settingpage.h
 FORMS += game.ui gameoverwidget.ui mainwindow.ui settingpage.ui
 SOURCES += game.cpp \
            gameoverwidget.cpp \
