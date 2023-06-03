@@ -175,6 +175,7 @@ release/qrc_resources.cpp: ../PacmanFight/resources.qrc \
 		../PacmanFight/resources/score.png \
 		../PacmanFight/resources/bean.png \
 		../PacmanFight/resources/blankBack.png \
+		../PacmanFight/resources/ghost.png \
 		../PacmanFight/resources/wall(4).png \
 		../PacmanFight/resources/pacman.png \
 		../PacmanFight/resources/wall(1).png \

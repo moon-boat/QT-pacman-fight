@@ -10,5 +10,6 @@
         <file>resources/wall(2).png</file>
         <file>resources/wall(3).png</file>
         <file>resources/wall(4).png</file>
+        <file>resources/ghost.png</file>
     </qresource>
 </RCC>

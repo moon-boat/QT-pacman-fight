@@ -148,5 +148,6 @@
 
 更新：  
 
-    新增game.ui上的总时间倒计时和双方血量条  
-    加入GameOverWidget中平局显示  
+    新增game.ui上的总时间倒计时和双方血量条，关联的信号和槽已完成  
+    加入GameOverWidget中平局时的显示  
+    将ghost.png加入qrc，实际演示中更新贴图  
