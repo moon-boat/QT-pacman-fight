@@ -10,6 +10,7 @@
 #define UI_GAMEOVERWIDGET_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QLabel>
@@ -29,6 +30,9 @@ public:
         if (GameOverWidget->objectName().isEmpty())
             GameOverWidget->setObjectName("GameOverWidget");
         GameOverWidget->resize(1024, 768);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/images/resources/bean.png"), QSize(), QIcon::Normal, QIcon::Off);
+        GameOverWidget->setWindowIcon(icon);
         GameOverWidget->setWindowOpacity(1.000000000000000);
         GameOverWidget->setStyleSheet(QString::fromUtf8("background-color: rgba(0, 0, 0, 0);\n"
 "border-color: rgba(0, 0, 0, 0);"));
@@ -76,7 +80,7 @@ public:
 
     void retranslateUi(QDialog *GameOverWidget)
     {
-        GameOverWidget->setWindowTitle(QCoreApplication::translate("GameOverWidget", "Dialog", nullptr));
+        GameOverWidget->setWindowTitle(QCoreApplication::translate("GameOverWidget", "GameOver!", nullptr));
         RestartInGameOverWidget->setText(QCoreApplication::translate("GameOverWidget", "Restart", nullptr));
         QuitInGameOverWidget->setText(QCoreApplication::translate("GameOverWidget", "Quit", nullptr));
         WinnerDisplayInGameOverWidget->setText(QString());

@@ -2,6 +2,7 @@ debug/game.o
 debug/gameoverwidget.o
 debug/main.o
 debug/mainwindow.o
+debug/music_player.o
 debug/settingpage.o
 debug/bean.o
 debug/bean_object.o

@@ -14,7 +14,11 @@
    <enum>Qt::StrongFocus</enum>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>GhostFight</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/images/resources/ghost.png</normaloff>:/images/resources/ghost.png</iconset>
   </property>
   <widget class="QPushButton" name="GameSettingButton">
    <property name="geometry">
@@ -233,6 +237,8 @@ font: 16pt &quot;Segoe Print&quot;;
   <zorder>BlueLifeBar</zorder>
   <zorder>TimeCounter</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

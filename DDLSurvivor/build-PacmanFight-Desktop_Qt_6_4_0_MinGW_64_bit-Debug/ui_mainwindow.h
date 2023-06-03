@@ -10,6 +10,7 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
@@ -32,6 +33,9 @@ public:
         MainWindow->resize(1024, 768);
         MainWindow->setMouseTracking(false);
         MainWindow->setFocusPolicy(Qt::ClickFocus);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/images/resources/pacman.png"), QSize(), QIcon::Normal, QIcon::Off);
+        MainWindow->setWindowIcon(icon);
         MainWindow->setStyleSheet(QString::fromUtf8("background-image: url(:/images/resources/mainback.png);"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");

@@ -10,6 +10,7 @@
 #define UI_GAME_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QLabel>
@@ -38,6 +39,9 @@ public:
             Game->setObjectName("Game");
         Game->resize(1024, 768);
         Game->setFocusPolicy(Qt::StrongFocus);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/images/resources/ghost.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Game->setWindowIcon(icon);
         GameSettingButton = new QPushButton(Game);
         GameSettingButton->setObjectName("GameSettingButton");
         GameSettingButton->setGeometry(QRect(0, 0, 131, 41));
@@ -135,7 +139,7 @@ public:
 
     void retranslateUi(QWidget *Game)
     {
-        Game->setWindowTitle(QCoreApplication::translate("Game", "Form", nullptr));
+        Game->setWindowTitle(QCoreApplication::translate("Game", "GhostFight", nullptr));
         GameSettingButton->setText(QCoreApplication::translate("Game", "Setting", nullptr));
         RedScoreTextLabel->setText(QCoreApplication::translate("Game", "Score:", nullptr));
         RedScoreLabel->setText(QString());

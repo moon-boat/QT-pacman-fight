@@ -340,8 +340,10 @@ Makefile: ../PacmanFight/PacmanFight.pro E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_6
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/features/yacc.prf \
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/features/lex.prf \
 		../PacmanFight/PacmanFight.pro \
+		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/lib/Qt6Multimedia.prl \
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/lib/Qt6Widgets.prl \
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/lib/Qt6Gui.prl \
+		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/lib/Qt6Network.prl \
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/lib/Qt6Core.prl \
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/lib/Qt6EntryPoint.prl \
 		E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/features/build_pass.prf \
@@ -617,8 +619,10 @@ E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/features/exceptions.prf:
 E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/features/yacc.prf:
 E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/features/lex.prf:
 ../PacmanFight/PacmanFight.pro:
+E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/lib/Qt6Multimedia.prl:
 E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/lib/Qt6Widgets.prl:
 E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/lib/Qt6Gui.prl:
+E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/lib/Qt6Network.prl:
 E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/lib/Qt6Core.prl:
 E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/lib/Qt6EntryPoint.prl:
 E:/ProgramFiles/CppGUI/qt/6.4.0/mingw_64/mkspecs/features/build_pass.prf:

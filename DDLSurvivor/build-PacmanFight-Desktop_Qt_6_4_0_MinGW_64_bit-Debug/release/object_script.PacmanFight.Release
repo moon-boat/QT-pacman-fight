@@ -2,6 +2,7 @@ release/game.o
 release/gameoverwidget.o
 release/main.o
 release/mainwindow.o
+release/music_player.o
 release/settingpage.o
 release/bean.o
 release/bean_object.o

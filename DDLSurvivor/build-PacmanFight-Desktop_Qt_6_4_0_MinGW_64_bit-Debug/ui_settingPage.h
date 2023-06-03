@@ -10,6 +10,7 @@
 #define UI_SETTINGPAGE_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
@@ -41,6 +42,9 @@ public:
         palette.setBrush(QPalette::Disabled, QPalette::Base, brush);
         palette.setBrush(QPalette::Disabled, QPalette::Window, brush);
         SettingPage->setPalette(palette);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/images/resources/mainback.png"), QSize(), QIcon::Normal, QIcon::Off);
+        SettingPage->setWindowIcon(icon);
         SettingPage->setAutoFillBackground(false);
         SettingPage->setStyleSheet(QString::fromUtf8("background-color: rgba(0, 0, 0, 0);\n"
 "border-color: rgba(0, 0, 0, 0);"));

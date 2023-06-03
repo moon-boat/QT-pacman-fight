@@ -1,6 +1,6 @@
 #include "wall_object.h"
 
-QString wall_path(":/images/resources/wall(1).png");
+QString wall_path(":/images/resources/wall(1)(1).jpg");
 
 wall_object::wall_object(QPointF _pos,QRectF _rec):
     GameAbstractObject(_rec, wall_path, wall,_pos),

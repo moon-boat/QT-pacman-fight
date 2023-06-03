@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>GameOver!</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/images/resources/bean.png</normaloff>:/images/resources/bean.png</iconset>
   </property>
   <property name="windowOpacity">
    <double>1.000000000000000</double>
@@ -105,6 +109,8 @@ font: 16pt &quot;Segoe Print&quot;;
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

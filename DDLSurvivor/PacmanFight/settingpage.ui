@@ -107,6 +107,10 @@
   <property name="windowTitle">
    <string>Setting</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/images/resources/mainback.png</normaloff>:/images/resources/mainback.png</iconset>
+  </property>
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
@@ -581,6 +585,8 @@ QPushButton::hover{
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
