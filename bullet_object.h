@@ -5,10 +5,11 @@
 #include "bullet.h"
 #include "gameabstractobject.h"
 
-class bullet_object:public GameAbstractObject ,public Bullet
+class bullet_object: public GameAbstractObject, public Bullet
 {
 public:
     bullet_object(QPointF _pos,qreal _angle);
+    void set_pos();
     void set_angle();
     void update();
 };
