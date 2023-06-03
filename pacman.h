@@ -1,7 +1,7 @@
 #ifndef PACMAN_H
 #define PACMAN_H
 
-#include <QGraphicsItem>
+#include <QPointF>
 #include "bean.h"
 #include "bullet.h"
 #include "ghost.h"
@@ -11,33 +11,31 @@ class Pacman
 {
 public:
     Pacman();
-    Pacman(int c,qreal X,qreal Y,qreal radius,qreal gunangle,int l,int s);
+    Pacman(int c, QPointF _pos, qreal radius, qreal gunangle, int l, int s);
 
-    bool eatBean(Bean* bean);
-    bool getShot(Bullet* bullet);
-    bool collideWithGhost(Ghost* ghost);
-    bool Pacman::eatCapsule(Capsule* capsule);
+    bool eatBean(const Bean* bean);
+    bool getShot(const Bullet* bullet);
 
-    qreal getX() const;
-    qreal getY() const;
+    QPointF getPosition() const;
     qreal getR() const;
     qreal getGunAngle() const;
     int getLife() const;
     int getScore() const;
+    int getColor() const;
     bool getIsInvincible()const;
 
-    void setX(qreal x);
-    void setY(qreal y);
+    void setPosition(const QPointF& _pos);
     void setR(qreal r);
     void setGunAngle(qreal angle);
     void setLife(int life);
     void setScore(int score);
     void setIsInvincible(bool f);
+    bool collideWithGhost(Ghost* ghost);
+    bool eatCapsule(Capsule* capsule);
 
 private:
     int color;
-    qreal x;
-    qreal y;
+    QPointF pos;
     qreal r;
     qreal gunAngle;
     int life;
