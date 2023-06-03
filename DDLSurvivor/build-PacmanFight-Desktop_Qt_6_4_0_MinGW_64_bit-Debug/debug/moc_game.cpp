@@ -26,7 +26,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 namespace {
 struct qt_meta_stringdata_Game_t {
-    uint offsetsAndSizes[28];
+    uint offsetsAndSizes[26];
     char stringdata0[5];
     char stringdata1[29];
     char stringdata2[1];
@@ -39,8 +39,7 @@ struct qt_meta_stringdata_Game_t {
     char stringdata9[13];
     char stringdata10[25];
     char stringdata11[11];
-    char stringdata12[9];
-    char stringdata13[11];
+    char stringdata12[7];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_Game_t::offsetsAndSizes) + ofs), len 
@@ -58,8 +57,7 @@ Q_CONSTINIT static const qt_meta_stringdata_Game_t qt_meta_stringdata_Game = {
         QT_MOC_LITERAL(96, 12),  // "timeContinue"
         QT_MOC_LITERAL(109, 24),  // "BlueLabelTestTextSetting"
         QT_MOC_LITERAL(134, 10),  // "keySlotOut"
-        QT_MOC_LITERAL(145, 8),  // "gameOver"
-        QT_MOC_LITERAL(154, 10)   // "WinnerType"
+        QT_MOC_LITERAL(145, 6)   // "reBorn"
     },
     "Game",
     "on_GameSettingButton_clicked",
@@ -73,8 +71,7 @@ Q_CONSTINIT static const qt_meta_stringdata_Game_t qt_meta_stringdata_Game = {
     "timeContinue",
     "BlueLabelTestTextSetting",
     "keySlotOut",
-    "gameOver",
-    "WinnerType"
+    "reBorn"
 };
 #undef QT_MOC_LITERAL
 } // unnamed namespace
@@ -110,7 +107,7 @@ Q_CONSTINIT static const uint qt_meta_data_Game[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,   13,
+    QMetaType::Void, QMetaType::Bool,    8,
 
        0        // eod
 };
@@ -141,9 +138,9 @@ Q_CONSTINIT const QMetaObject Game::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'keySlotOut'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'gameOver'
+        // method 'reBorn'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>
+        QtPrivate::TypeAndForceComplete<bool, std::false_type>
     >,
     nullptr
 } };
@@ -161,7 +158,7 @@ void Game::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         case 4: _t->timeContinue(); break;
         case 5: _t->BlueLabelTestTextSetting(); break;
         case 6: _t->keySlotOut(); break;
-        case 7: _t->gameOver((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 7: _t->reBorn((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
         default: ;
         }
     }

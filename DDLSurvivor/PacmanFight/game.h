@@ -14,6 +14,7 @@
 #include "./BackEnd/bullet_object.h"
 #include "./BackEnd/pacman_object.h"
 #include "./BackEnd/wall_object.h"
+#include "gameoverwidget.h"
 
 namespace Ui {
 class Game;
@@ -44,7 +45,7 @@ private slots:
     void timeContinue();
     void BlueLabelTestTextSetting();
     void keySlotOut();
-    void gameOver(int WinnerType);
+    void reBorn(bool a);
 
 private:
     Ui::Game *ui;
@@ -56,6 +57,8 @@ private:
     QList<int> keys;
     long long globalTime;
     void JustClose();
+    void gameOver(int WinnerType);
+    MainWindow* MainWin() const;
 };
 
 #endif // GAME_H

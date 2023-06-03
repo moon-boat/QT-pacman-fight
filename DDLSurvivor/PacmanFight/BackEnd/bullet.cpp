@@ -47,7 +47,6 @@ void Bullet::collideWithWall(const Wall* wall){
             qreal tarHoriX = (pos.y() - tarHorizon) * dx / dy + pos.x();
             qreal left = bounding.left(), right = bounding.right();
             bool collideWithHorizonal = ((tarHoriX >= left and tarHoriX <= right) ? true : false);
-            qDebug() << tarHorizon << " " << dx << dy << pos.x() << tarHoriX << " " << left << " " << right << "\n";
             angle = 2 * (collideWithHorizonal ? 0 : 90) - angle;
         }
         durability -= 1;

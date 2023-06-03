@@ -15,6 +15,7 @@ INCLUDEPATH += .
 
 # Input
 HEADERS += game.h \
+           gameoverwidget.h \
            mainwindow.h \
            settingpage.h \
            BackEnd/bean.h \
@@ -26,8 +27,10 @@ HEADERS += game.h \
            BackEnd/pacman_object.h \
            BackEnd/wall.h \
            BackEnd/wall_object.h
-FORMS += game.ui mainwindow.ui settingpage.ui
+FORMS += game.ui mainwindow.ui settingpage.ui \
+    gameoverwidget.ui
 SOURCES += game.cpp \
+           gameoverwidget.cpp \
            main.cpp \
            mainwindow.cpp \
            settingpage.cpp \

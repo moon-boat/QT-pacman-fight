@@ -107,6 +107,11 @@ void Game::recQuitSign(bool a)
         JustClose();
 }
 
+MainWindow* Game::MainWin() const
+{
+    return returnTo;
+}
+
 void Game::JustClose()
 {
     if (returnTo)
@@ -127,7 +132,7 @@ void Game::sceneUpdator()
 
     for (int i = 0; i < scene.items().length(); i++)
     {
-        auto iter = scene.items()[i];
+        auto iter = scene.items().at(i);
         GameAbstractObject *t = (GameAbstractObject *)iter;
         if (t->type == bullet or t->type == pacman)
         {
@@ -158,6 +163,7 @@ void Game::sceneUpdator()
                 if (spe3->getLife() <= 0)
                 {
                     gameOver(1 - spe3->getColor());
+                    time->stop();
                     break;
                 }
                 auto collides2 = scene.collidingItems(spe3);
@@ -192,8 +198,8 @@ void Game::sceneUpdator()
 
 void Game::BlueLabelTestTextSetting()
 {
-    char p[120]{};
-    itoa(scene.items().size(), p, 10);
+    char p[120] {};
+    itoa(blue->getScore(), p, 10);
     ui->BlueScoreLabel->setText(p);
 }
 
@@ -312,6 +318,22 @@ void Game::keySlotOut()
 
 void Game::gameOver(int WinnerType)
 {
-    // Wait For Implement
-    Q_UNUSED(WinnerType);
+    GameOverWidget *gow = new GameOverWidget(WinnerType);
+    connect(gow, &GameOverWidget::newOne, this, &Game::reBorn);
+    gow->show();
+    this->hide();
+}
+
+void Game::reBorn(bool a)
+{
+    if (a)
+    {
+        Game *t = new Game(nullptr, MainWin());
+        t->show();
+        delete this;
+    }
+    else
+    {
+        JustClose();
+    }
 }
