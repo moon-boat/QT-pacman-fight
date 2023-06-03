@@ -142,4 +142,4 @@
 更新：  
 
     新增GameOverWidget，关联的信号和槽已完成  
-    
+    完成了ghost基础逻辑适配，目前暂用bean.png作为其贴图  

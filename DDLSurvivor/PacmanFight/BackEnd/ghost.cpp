@@ -22,3 +22,7 @@ void Ghost::setAngle(qreal radius){
     r=radius;
 }
 
+bool Ghost::attachAPacman(const Pacman *pm) const
+{
+    return QLineF(pos, pm->getPosition()).length() <= r + pm->getR();
+}

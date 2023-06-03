@@ -31,7 +31,8 @@ Game::Game(QWidget *parent, QWidget *main):
     setFocusPolicy(Qt::StrongFocus);
 
     connect(time, &QTimer::timeout, this, &Game::sceneUpdator);
-    connect(time, &QTimer::timeout, this, &Game::BlueLabelTestTextSetting);
+    connect(time, &QTimer::timeout, this, &Game::RedLabelTextSetting);
+    connect(time, &QTimer::timeout, this, &Game::BlueLabelTextSetting);
     connect(keyTime, &QTimer::timeout, this, &Game::keySlotOut);
 
     time->start(frameUpdateSeconds);
@@ -41,9 +42,13 @@ Game::Game(QWidget *parent, QWidget *main):
     red = new pacman_object(0);
     blue = new pacman_object(1);
 
+    ghost_object *ghost1 = new ghost_object(QPointF(400, 400), 0);
+    connect(time, &QTimer::timeout, ghost1, &ghost_object::update);
+
     wall_object *testWall = new wall_object(QPointF(400, 400), QRectF(0, 0, 200, 40));
 
     scene.addItem(testWall);
+    scene.addItem(ghost1);
     scene.addItem(red);
     scene.addItem(blue);
 
@@ -66,6 +71,7 @@ Game::~Game()
         pacman_object *tp2;
         wall_object *tp3;
         bean_object *tp4;
+        ghost_object *tp5;
         switch (t->type)
         {
         case bullet:
@@ -83,6 +89,10 @@ Game::~Game()
         case bean:
             tp4 = (bean_object *)t;
             delete tp4;
+            break;
+        case ghost:
+            tp5 = (ghost_object *)t;
+            delete tp5;
             break;
         }
     }
@@ -188,6 +198,12 @@ void Game::sceneUpdator()
                             delete spe5;
                         }
                     }
+                    else if (t3->type == ghost)
+                    {
+                        ghost_object *spe6 = (ghost_object *)t3;
+                        if (spe6->attachAPacman(spe3))
+                            spe3->setLife(0);
+                    }
                 }
             }
         }
@@ -196,7 +212,14 @@ void Game::sceneUpdator()
     scene.update();
 }
 
-void Game::BlueLabelTestTextSetting()
+void Game::RedLabelTextSetting()
+{
+    char p[120] {};
+    itoa(red->getScore(), p, 10);
+    ui->RedScoreLabel->setText(p);
+}
+
+void Game::BlueLabelTextSetting()
 {
     char p[120] {};
     itoa(blue->getScore(), p, 10);

@@ -14,6 +14,7 @@
 #include "./BackEnd/bullet_object.h"
 #include "./BackEnd/pacman_object.h"
 #include "./BackEnd/wall_object.h"
+#include "./BackEnd/ghost_object.h"
 #include "gameoverwidget.h"
 
 namespace Ui {
@@ -43,7 +44,8 @@ private slots:
     void keyReleaseEvent(QKeyEvent *event);
     void recQuitSign(bool a);
     void timeContinue();
-    void BlueLabelTestTextSetting();
+    void RedLabelTextSetting();
+    void BlueLabelTextSetting();
     void keySlotOut();
     void reBorn(bool a);
 

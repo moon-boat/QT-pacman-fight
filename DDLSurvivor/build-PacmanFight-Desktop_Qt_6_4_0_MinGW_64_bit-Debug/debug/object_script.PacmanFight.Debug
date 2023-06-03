@@ -8,6 +8,8 @@ debug/bean_object.o
 debug/bullet.o
 debug/bullet_object.o
 debug/gameabstractobject.o
+debug/ghost.o
+debug/ghost_object.o
 debug/pacman.o
 debug/pacman_object.o
 debug/wall.o

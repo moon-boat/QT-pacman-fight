@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QPointF>
 #include <QRectF>
+#include <QLineF>
+#include "pacman.h"
 
 class Ghost
 {
@@ -15,6 +17,7 @@ public:
     void setPosition(const QPointF& position);
     void setR(qreal radius);
     void setAngle(qreal ang);
+    bool attachAPacman(const Pacman *pm) const;
 private:
     QPointF pos;
     qreal r;

@@ -8,6 +8,8 @@ release/bean_object.o
 release/bullet.o
 release/bullet_object.o
 release/gameabstractobject.o
+release/ghost.o
+release/ghost_object.o
 release/pacman.o
 release/pacman_object.o
 release/wall.o
