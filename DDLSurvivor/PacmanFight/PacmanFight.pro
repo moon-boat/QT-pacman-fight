@@ -17,6 +17,7 @@ INCLUDEPATH += .
 HEADERS += game.h \
            gameoverwidget.h \
            mainwindow.h \
+           music_player.h \
            settingpage.h \
            BackEnd/bean.h \
            BackEnd/bean_object.h \
@@ -34,6 +35,7 @@ SOURCES += game.cpp \
            gameoverwidget.cpp \
            main.cpp \
            mainwindow.cpp \
+           music_player.cpp \
            settingpage.cpp \
            BackEnd/bean.cpp \
            BackEnd/bean_object.cpp \
@@ -49,4 +51,5 @@ SOURCES += game.cpp \
 RESOURCES += resources.qrc
 
 QT += core gui
+QT += multimedia
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
