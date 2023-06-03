@@ -7,6 +7,7 @@
 #include <QKeyEvent>
 #include <QGraphicsScene>
 #include <QGraphicsItem>
+#include <ctime>
 #include "settingpage.h"
 #include "mainwindow.h"
 #include "./BackEnd/gameabstractobject.h"
@@ -49,16 +50,18 @@ private slots:
     void keySlotOut();
     void reBorn(bool a);
     void setTimeCounter();
+    void yieldBean();
 
 private:
     Ui::Game *ui;
     MainWindow *returnTo;
     SettingPage *sp;
-    QTimer *time, *keyTime;
+    QTimer *MainTime, *keyTime;
     pacman_object *red, *blue;
     QGraphicsScene scene;
     QList<int> keys;
     long long globalTime;
+    int totalBeans;
     void JustClose();
     void gameOver(int WinnerType);
     MainWindow* MainWin() const;

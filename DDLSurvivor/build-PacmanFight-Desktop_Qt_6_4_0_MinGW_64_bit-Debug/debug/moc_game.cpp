@@ -26,7 +26,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 namespace {
 struct qt_meta_stringdata_Game_t {
-    uint offsetsAndSizes[30];
+    uint offsetsAndSizes[32];
     char stringdata0[5];
     char stringdata1[29];
     char stringdata2[1];
@@ -42,6 +42,7 @@ struct qt_meta_stringdata_Game_t {
     char stringdata12[11];
     char stringdata13[7];
     char stringdata14[15];
+    char stringdata15[10];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_Game_t::offsetsAndSizes) + ofs), len 
@@ -61,7 +62,8 @@ Q_CONSTINIT static const qt_meta_stringdata_Game_t qt_meta_stringdata_Game = {
         QT_MOC_LITERAL(129, 20),  // "BlueLabelTextSetting"
         QT_MOC_LITERAL(150, 10),  // "keySlotOut"
         QT_MOC_LITERAL(161, 6),  // "reBorn"
-        QT_MOC_LITERAL(168, 14)   // "setTimeCounter"
+        QT_MOC_LITERAL(168, 14),  // "setTimeCounter"
+        QT_MOC_LITERAL(183, 9)   // "yieldBean"
     },
     "Game",
     "on_GameSettingButton_clicked",
@@ -77,7 +79,8 @@ Q_CONSTINIT static const qt_meta_stringdata_Game_t qt_meta_stringdata_Game = {
     "BlueLabelTextSetting",
     "keySlotOut",
     "reBorn",
-    "setTimeCounter"
+    "setTimeCounter",
+    "yieldBean"
 };
 #undef QT_MOC_LITERAL
 } // unnamed namespace
@@ -88,7 +91,7 @@ Q_CONSTINIT static const uint qt_meta_data_Game[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -96,16 +99,17 @@ Q_CONSTINIT static const uint qt_meta_data_Game[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   74,    2, 0x08,    1 /* Private */,
-       3,    1,   75,    2, 0x08,    2 /* Private */,
-       6,    1,   78,    2, 0x08,    4 /* Private */,
-       7,    1,   81,    2, 0x08,    6 /* Private */,
-       9,    0,   84,    2, 0x08,    8 /* Private */,
-      10,    0,   85,    2, 0x08,    9 /* Private */,
-      11,    0,   86,    2, 0x08,   10 /* Private */,
-      12,    0,   87,    2, 0x08,   11 /* Private */,
-      13,    1,   88,    2, 0x08,   12 /* Private */,
-      14,    0,   91,    2, 0x08,   14 /* Private */,
+       1,    0,   80,    2, 0x08,    1 /* Private */,
+       3,    1,   81,    2, 0x08,    2 /* Private */,
+       6,    1,   84,    2, 0x08,    4 /* Private */,
+       7,    1,   87,    2, 0x08,    6 /* Private */,
+       9,    0,   90,    2, 0x08,    8 /* Private */,
+      10,    0,   91,    2, 0x08,    9 /* Private */,
+      11,    0,   92,    2, 0x08,   10 /* Private */,
+      12,    0,   93,    2, 0x08,   11 /* Private */,
+      13,    1,   94,    2, 0x08,   12 /* Private */,
+      14,    0,   97,    2, 0x08,   14 /* Private */,
+      15,    0,   98,    2, 0x08,   15 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -117,6 +121,7 @@ Q_CONSTINIT static const uint qt_meta_data_Game[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Bool,    8,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -154,6 +159,8 @@ Q_CONSTINIT const QMetaObject Game::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<bool, std::false_type>,
         // method 'setTimeCounter'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'yieldBean'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -175,6 +182,7 @@ void Game::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         case 7: _t->keySlotOut(); break;
         case 8: _t->reBorn((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
         case 9: _t->setTimeCounter(); break;
+        case 10: _t->yieldBean(); break;
         default: ;
         }
     }
@@ -199,13 +207,13 @@ int Game::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 11;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 11)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 10;
+        _id -= 11;
     }
     return _id;
 }

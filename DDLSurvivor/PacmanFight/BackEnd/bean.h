@@ -12,7 +12,7 @@ enum BeanType {
 class Bean
 {
 public:
-    explicit Bean(BeanType _type, QPointF _pos);
+    Bean(BeanType _type, QPointF _pos);
 
     int getRadius() const;
     int getScore() const;

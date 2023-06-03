@@ -5,6 +5,8 @@
 int frameUpdateSeconds = 33;
 qreal pacmanWalkLength = 0.03;
 qreal pacmanRotation = 0.06;
+int beanYieldRate = 5; // 1-100 for 0.1%-10% for each 1/30 second
+int BeansLimit = 20;
 int shootingLimit = 10;
 int timeLimit = 30000 / frameUpdateSeconds; // 30s的demo测试数据
 
@@ -22,22 +24,24 @@ void testBullet::update()
 Game::Game(QWidget *parent, QWidget *main):
     QWidget(parent),
     ui(new Ui::Game),
-    globalTime(0)
+    globalTime(0),
+    totalBeans(0)
 {
     ui->setupUi(this);
     returnTo = (MainWindow*)main;
     sp = nullptr;
-    time = new QTimer(this);
+    MainTime = new QTimer(this);
     keyTime = new QTimer(this);
     setFocusPolicy(Qt::StrongFocus);
 
-    connect(time, &QTimer::timeout, this, &Game::sceneUpdator);
-    connect(time, &QTimer::timeout, this, &Game::RedLabelTextSetting);
-    connect(time, &QTimer::timeout, this, &Game::BlueLabelTextSetting);
+    connect(MainTime, &QTimer::timeout, this, &Game::sceneUpdator);
+    connect(MainTime, &QTimer::timeout, this, &Game::RedLabelTextSetting);
+    connect(MainTime, &QTimer::timeout, this, &Game::BlueLabelTextSetting);
     connect(keyTime, &QTimer::timeout, this, &Game::keySlotOut);
-    connect(time, &QTimer::timeout, this, &Game::setTimeCounter);
+    connect(MainTime, &QTimer::timeout, this, &Game::yieldBean);
+    connect(MainTime, &QTimer::timeout, this, &Game::setTimeCounter);
 
-    time->start(frameUpdateSeconds);
+    MainTime->start(frameUpdateSeconds);
     scene.setSceneRect(0, 0, 1024, 768);
     scene.setItemIndexMethod(QGraphicsScene::NoIndex);
 
@@ -45,7 +49,7 @@ Game::Game(QWidget *parent, QWidget *main):
     blue = new pacman_object(1);
 
     ghost_object *ghost1 = new ghost_object(QPointF(400, 400), 0);
-    connect(time, &QTimer::timeout, ghost1, &ghost_object::update);
+    connect(MainTime, &QTimer::timeout, ghost1, &ghost_object::update);
 
     wall_object *testWall = new wall_object(QPointF(400, 400), QRectF(0, 0, 200, 40));
 
@@ -63,7 +67,8 @@ Game::Game(QWidget *parent, QWidget *main):
 Game::~Game()
 {
     delete ui;
-    delete time;
+    delete MainTime;
+    delete keyTime;
     if (sp)
         delete sp;
     for (auto iter: scene.items())
@@ -108,7 +113,7 @@ void Game::on_GameSettingButton_clicked()
     sp->move(globalPos.x(), globalPos.y());
     ui->GameSettingButton->setAttribute(Qt::WA_UnderMouse, false);
     sp->show();
-    time->stop();
+    MainTime->stop();
     connect(sp, &SettingPage::shouldQuit, this, &Game::recQuitSign, Qt::UniqueConnection);
     connect(sp, &SettingPage::timeContinue, this, &Game::timeContinue, Qt::UniqueConnection);
 }
@@ -135,7 +140,7 @@ void Game::JustClose()
 
 void Game::timeContinue()
 {
-    time->start(frameUpdateSeconds);
+    MainTime->start(frameUpdateSeconds);
 }
 
 void Game::setTimeCounter()
@@ -156,12 +161,14 @@ void Game::sceneUpdator()
     globalTime++;
     if (globalTime >= timeLimit)
     {
+        MainTime->stop();
         if (red->getScore() > blue->getScore())
             gameOver(0);
         else if (red->getScore() < blue->getScore())
             gameOver(1);
-        gameOver(-1);
-        time->stop();
+        else
+            gameOver(-1);
+        return ;
     }
     for (int i = 0; i < scene.items().length(); i++)
     {
@@ -196,7 +203,7 @@ void Game::sceneUpdator()
                 if (spe3->getLife() <= 0)
                 {
                     gameOver(1 - spe3->getColor());
-                    time->stop();
+                    MainTime->stop();
                     break;
                 }
                 auto collides2 = scene.collidingItems(spe3);
@@ -208,6 +215,7 @@ void Game::sceneUpdator()
                         bean_object *spe4 = (bean_object *)t3;
                         if (spe3->eatBean(spe4))
                         {
+                            totalBeans--;
                             scene.removeItem(iter3);
                             delete spe4;
                         }
@@ -242,7 +250,6 @@ void Game::RedLabelTextSetting()
     ui->RedScoreLabel->setText(p);
     ui->RedLifeBar->setValue(red->getLife());
     ui->RedLifeBar->setMaximum(10);
-
 }
 
 void Game::BlueLabelTextSetting()
@@ -252,7 +259,45 @@ void Game::BlueLabelTextSetting()
     ui->BlueScoreLabel->setText(p);
     ui->BlueLifeBar->setValue(blue->getLife());
     ui->BlueLifeBar->setMaximum(10);
+}
 
+void Game::yieldBean()
+{
+    srand(clock());
+    qDebug() << totalBeans;
+    if ((rand() % 100 < beanYieldRate) && (totalBeans <= BeansLimit))
+    {
+        QTransform trans(1, 0, 0, 0, 1, 0, 0, 0, 1);
+        qreal nx = 0.5, ny = 0.5;
+        bool done = false;
+        while (!done)
+        {
+            nx = rand() % 1024 + 0.5;
+            ny = rand() % 768 + 0.5;
+            if (scene.itemAt(nx, ny, trans) == nullptr)
+                done = true;
+        }
+        BeanType bt = Small;
+        switch (rand() % 6)
+        {
+        case 0:
+            bt = Large;
+            break;
+        case 1:
+        case 2:
+            bt = Medium;
+            break;
+        case 3:
+        case 4:
+        case 5:
+            bt = Small;
+            break;
+        }
+        qDebug() << bt << " " << nx << " " << ny;
+        bean_object *nb = new bean_object(bt, QPointF(nx, ny));
+        scene.addItem(nb);
+        totalBeans++;
+    }
 }
 
 void Game::keyPressEvent(QKeyEvent *event)
@@ -319,7 +364,7 @@ void Game::keySlotOut()
                 pos.ry() += (red->getR() + 10) * sin(angle);
                 angle = red->getGunAngle();
                 ob = new bullet_object(pos, angle);
-                connect(time, &QTimer::timeout, ob, &bullet_object::update);
+                connect(MainTime, &QTimer::timeout, ob, &bullet_object::update);
                 scene.addItem(ob);
             }
             break;
@@ -360,7 +405,7 @@ void Game::keySlotOut()
                 pos.ry() += (blue->getR() + 10) * sin(angle);
                 angle = blue->getGunAngle();
                 ob = new bullet_object(pos, angle);
-                connect(time, &QTimer::timeout, ob, &bullet_object::update);
+                connect(MainTime, &QTimer::timeout, ob, &bullet_object::update);
                 scene.addItem(ob);
             }
             break;
