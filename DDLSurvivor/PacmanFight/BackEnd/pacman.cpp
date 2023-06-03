@@ -53,12 +53,24 @@ Pacman::Pacman(int c,QPointF _pos,qreal radius,qreal gunangle,int l,int s)
 
 bool Pacman::eatBean(const Bean* bean)
 {
-    QPointF pacmanCenter(pos);
-    QPointF beanCenter = bean->getPosition();
-    qreal distance = QLineF(pacmanCenter, beanCenter).length();
+    qreal distance = QLineF(pos, bean->getPosition()).length();
     qreal sumOfRadii = r + bean->getRadius();
-    return distance <= sumOfRadii;
+    bool res = distance <= sumOfRadii;
+    if (res)
+    {
+        score += bean->getScore();
+    }
+    return res;
 }
+
+bool Pacman::getShot(const Bullet *bullet)
+{
+    bool res = QLineF(bullet->getPosition(), pos).length() <= r;
+    if (res)
+        life--;
+    return res;
+}
+
 QPointF Pacman::getPosition() const
 {
     return pos;
@@ -68,7 +80,10 @@ qreal Pacman::getGunAngle() const
 {
     return gunAngle;
 }
-
+qreal Pacman::getR() const
+{
+    return r;
+}
 int Pacman::getLife() const
 {
     return life;
@@ -77,6 +92,10 @@ int Pacman::getLife() const
 int Pacman::getScore() const
 {
     return score;
+}
+int Pacman::getColor() const
+{
+    return color;
 }
 
 void Pacman::setPosition(const QPointF& _pos)

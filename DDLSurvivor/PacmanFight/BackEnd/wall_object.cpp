@@ -2,10 +2,10 @@
 
 QString wall_path(":/images/resources/wall.png");
 
-wall_object::wall_object(QPointF _pos,QRectF _rec,qreal _angle):
-    GameAbstractObject(_rec, wall_path, wall,_pos, 0, _angle),
-    Wall(_rec, _angle)
+wall_object::wall_object(QPointF _pos,QRectF _rec):
+    GameAbstractObject(_rec, wall_path, wall,_pos),
+    Wall(_rec, _pos)
 {
-
+    setZValue(1);
 }
 

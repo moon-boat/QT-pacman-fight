@@ -1,7 +1,7 @@
 #include "bullet.h"
 
 Bullet::Bullet(QPointF _pos, qreal angle,int dura)
-    : pos(_pos), angle(angle),durability(dura)
+    : pos(_pos), angle(angle),durability(dura), exist(true)
 {
 //    setFlag(ItemIsMovable);
 //    setFlag(ItemIsSelectable);
@@ -10,8 +10,8 @@ Bullet::Bullet(QPointF _pos, qreal angle,int dura)
 QPointF Bullet::getPosition()const{
 return pos;
 }
-int Bullet::getdurability()const{
-    return durability;
+bool Bullet::isExist()const{
+    return exist;
 }
 //void Bullet::advance(int phase)
 //{
@@ -32,11 +32,18 @@ void Bullet::set_pos(const QPointF &_pos)
     pos = _pos;
 }
 void Bullet::collideWithWall(const Wall* wall){
-    if(wall->getRect().contains(pos))
+    QRectF bounding = wall->getRect();
+    bounding.moveTo(wall->getPos());
+    if (bounding.contains(pos))
     {
-        angle= 2 * wall->getangle() - angle;
-        durability-=1;
-        if(durability<=0)exist=false;
+        qreal top = bounding.top(), bottom = bounding.bottom(), left = bounding.left(), right = bounding.right();
+        qreal dis[4] {top - pos.y(), pos.y() - bottom, pos.x() - left, right - pos.x()};
+        qreal closest = *std::min_element(dis, dis + 4);
+        bool collideWithVertical = closest == dis[0] or closest == dis[1];
+        angle = 2 * (collideWithVertical ? 0 : 90) - angle;
+        durability -= 1;
+        if (durability <= 0)
+            exist = false;
     }
 }
 qreal Bullet::getAngle() const{

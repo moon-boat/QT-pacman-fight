@@ -7,5 +7,5 @@ bean_object::bean_object(BeanType type,QPointF _pos):
     GameAbstractObject(bean_size[(int)type], bean_path, bean,_pos, 0, 0),
     Bean(type,_pos)
 {
-
+    setZValue(3);
 }

@@ -14,7 +14,12 @@ GameAbstractObject::GameAbstractObject(const QRectF &rec, const QString &path, O
 
 QRectF GameAbstractObject::boundingRect() const
 {
-    return bounding;
+    QRectF res(bounding);
+    QPointF t = pos;
+    t.rx() += res.left();
+    t.ry() += res.top();
+    res.moveTo(t);
+    return res;
 }
 
 void GameAbstractObject::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -33,15 +38,6 @@ void GameAbstractObject::updatePos(int frameUpdateSeconds)
 {
     pos.rx() += velocity * frameUpdateSeconds * cos(direction);
     pos.ry() += velocity * frameUpdateSeconds * sin(direction);
-    QRectF bounding = scene()->sceneRect();
-    QPointF newPos(pos.x(), pos.y());
-    if (!bounding.contains(newPos))
-    {
-        scene()->removeItem(this);
-        delete this;
-    }
-    else
-        setPos(newPos);
 }
 
 QPointF& GameAbstractObject::setPosition()

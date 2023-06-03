@@ -1,14 +1,16 @@
 #include "wall.h"
 #include <QPainter>
 
-Wall::Wall(QRectF rec, qreal ang)
-    : rect(rec), angle(ang)
+Wall::Wall(QRectF rec, QPointF _pos)
+    : rect(rec), pos(_pos)
 {
 }
 QRectF Wall::getRect() const
 {
     return rect;
 }
-qreal Wall::getangle()const{
-    return angle;
+
+QPointF Wall::getPos() const
+{
+    return pos;
 }

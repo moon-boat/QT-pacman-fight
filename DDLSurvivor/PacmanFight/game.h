@@ -34,7 +34,7 @@ public:
     explicit Game(QWidget *parent = nullptr, QWidget *main = nullptr);
     ~Game();
 
-    void timeCounter();
+    void sceneUpdator();
 
 private slots:
     void on_GameSettingButton_clicked();
@@ -44,6 +44,7 @@ private slots:
     void timeContinue();
     void BlueLabelTestTextSetting();
     void keySlotOut();
+    void gameOver(int WinnerType);
 
 private:
     Ui::Game *ui;
@@ -53,7 +54,7 @@ private:
     pacman_object *red, *blue;
     QGraphicsScene scene;
     QList<int> keys;
-    int globalTime;
+    long long globalTime;
     void JustClose();
 };
 

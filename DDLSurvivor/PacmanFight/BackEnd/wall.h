@@ -6,14 +6,14 @@
 class Wall
 {
 public:
-    Wall(QRectF rec, qreal ang);
+    Wall(QRectF rec, QPointF _pos);
 
     QRectF getRect() const;
-    qreal getangle()const;
+    QPointF getPos() const;
 
 private:
+    QPointF pos;
     QRectF rect;
-    qreal angle;
 };
 
 #endif // WALL_H

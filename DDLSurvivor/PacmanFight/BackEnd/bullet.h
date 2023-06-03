@@ -10,7 +10,7 @@ public:
     Bullet(QPointF _pos, qreal angle,int dura);
     //void advance(int phase) override;
     QPointF getPosition()const;
-    int getdurability()const;
+    bool isExist()const;
     qreal getAngle()const;
     void set_pos(const QPointF &_pos);
     void setexist(bool f1);

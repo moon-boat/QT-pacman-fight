@@ -20,7 +20,6 @@ private:
     qreal velocity, direction;
 
 protected:
-    QPointF getPosition() const;
     QPointF& setPosition();
     qreal& setDirection();
 
@@ -39,6 +38,7 @@ public:
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
     void updatePos(int frameUpdateSeconds);
+    QPointF getPosition() const;
 
     ObjectType type;
 };
