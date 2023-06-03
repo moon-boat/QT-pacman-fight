@@ -11,6 +11,5 @@ int main(int argc, char *argv[])
     Music_player music_player;
     w.show();
     music_player.music_play();
-    music_player.print_state();
     return a.exec();
 }
