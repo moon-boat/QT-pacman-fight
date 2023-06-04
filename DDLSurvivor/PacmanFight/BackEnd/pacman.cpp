@@ -1,5 +1,6 @@
 #include <QGraphicsItem>
 #include "bean.h"
+#include "setting.h"
 #include "pacman.h"
 
 //class Pacman : public QGraphicsItem
@@ -67,7 +68,7 @@ bool Pacman::getShot(const Bullet *bullet)
 {
     bool res = QLineF(bullet->getPosition(), pos).length() <= r;
     if (res)
-        life--;
+        life -= setting::bulletAttack;
     return res;
 }
 

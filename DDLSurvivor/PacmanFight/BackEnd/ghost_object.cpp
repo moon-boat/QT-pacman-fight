@@ -1,4 +1,5 @@
 #include "ghost_object.h"
+#include "setting.h"
 #include <QRandomGenerator>
 
 #include <QTime>
@@ -65,6 +66,6 @@ void ghost_object::set_pos()
 }
 void ghost_object::update(const QPointF& red, const QPointF& blue){
     set_angle(red,blue);
-    updatePos(33);
+    updatePos(setting::frameUpdateSeconds);
     set_pos();
 }

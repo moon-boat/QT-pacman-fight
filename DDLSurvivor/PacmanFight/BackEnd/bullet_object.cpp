@@ -1,4 +1,5 @@
 #include "bullet_object.h"
+#include "setting.h"
 
 QRectF bullet_size{-25,-4,25,4};
 QString bullet_path{":/images/resources/bullet.png"};
@@ -18,6 +19,6 @@ void bullet_object::set_pos()
 }
 void bullet_object::update(){
     set_angle();
-    updatePos(33);
+    updatePos(setting::frameUpdateSeconds);
     set_pos();
 }

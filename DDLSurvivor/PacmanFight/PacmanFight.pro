@@ -18,6 +18,7 @@ HEADERS += game.h \
            gameoverwidget.h \
            mainwindow.h \
            music_player.h \
+           setting.h \
            settingpage.h \
            BackEnd/bean.h \
            BackEnd/bean_object.h \
@@ -40,6 +41,7 @@ SOURCES += game.cpp \
            main.cpp \
            mainwindow.cpp \
            music_player.cpp \
+           setting.cpp \
            settingpage.cpp \
            BackEnd/bean.cpp \
            BackEnd/bean_object.cpp \

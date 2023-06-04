@@ -2,14 +2,6 @@
 #include "ui_game.h"
 #include "settingpage.h"
 
-int frameUpdateSeconds = 33;
-qreal pacmanWalkLength = 0.03;
-qreal pacmanRotation = 0.06;
-int beanYieldRate = 5; // 1-100 for 0.1%-10% for each 1/30 second
-int BeansLimit = 20;
-int shootingLimit = 10;
-int timeLimit = 30000 / frameUpdateSeconds; // 30s的demo测试数据
-
 QRectF testBulletBoundingRectangle(0, 0, 25, 4);
 QString testBulletPictureIconPath(":/images/resources/bullet.png");
 
@@ -18,7 +10,7 @@ testBullet::testBullet(): GameAbstractObject(testBulletBoundingRectangle, testBu
 
 void testBullet::update()
 {
-    updatePos(frameUpdateSeconds);
+    updatePos(setting::frameUpdateSeconds);
 }
 
 Game::Game(QWidget *parent, QWidget *main):
@@ -42,7 +34,7 @@ Game::Game(QWidget *parent, QWidget *main):
     connect(MainTime, &QTimer::timeout, this, &Game::setTimeCounter);
     connect(MainTime, &QTimer::timeout, this, &Game::sendPos);
 
-    MainTime->start(frameUpdateSeconds);
+    MainTime->start(setting::frameUpdateSeconds);
     scene.setSceneRect(0, 0, 1024, 768);
     scene.setItemIndexMethod(QGraphicsScene::NoIndex);
 
@@ -53,21 +45,14 @@ Game::Game(QWidget *parent, QWidget *main):
     connect(MainTime, &QTimer::timeout, this, &Game::sendPos);
     connect(this, &Game::passPos, ghost1, &ghost_object::update, Qt::DirectConnection);
 
-    wall_object *testWall = new wall_object(QPointF(400, 400), QRectF(0, 0, 200, 40));
-    wall_object *testWall2 = new wall_object(QPointF(800, 0), QRectF(0, 0, 46, 226));
+    wall_object *testWall = new wall_object(QPointF(400, 400), QRectF(0, 0, 200, 40), setting::wall_icon_path_hor[0]);
+    wall_object *testWall2 = new wall_object(QPointF(800, 0), QRectF(0, 0, 46, 226), setting::wall_icon_path_ver[0]);
     env.append(testWall);
     env.append(testWall2);
-    for (int i = 0; i < 5; i++)
-    {
-        env.append(new wall_object(QPointF(i * 205, 0), QRectF(0, 0, 205, 46)));
-        env.append(new wall_object(QPointF(i * 205, 768 - 46), QRectF(0, 0, 205, 46)));
-    }
-    for (int i = 0; i < 4; i++)
-    {
-        env.append(new wall_object((QPointF(0, 46 + i * 226)), QRectF(0, 0, 46, 226)));
-        env.append(new wall_object(QPointF(1024 - 46, 46 + i * 226), QRectF(0, 0, 46, 226)));
-    }
-
+    env.append(new wall_object(QPoint(0, 0), QRectF(0, 0, 1025, 46), setting::wall_icon_path_hor[1]));
+    env.append(new wall_object(QPoint(0, 768 - 46), QRectF(0, 0, 1025, 46), setting::wall_icon_path_hor[1]));
+    env.append(new wall_object(QPoint(0, 0), QRectF(0, 0, 46, 1025), setting::wall_icon_path_ver[1]));
+    env.append(new wall_object(QPoint(1024 - 46, 0), QRectF(0, 0, 46, 1025), setting::wall_icon_path_ver[1]));
 
     for (auto t: env)
         scene.addItem(t);
@@ -162,12 +147,12 @@ void Game::JustClose()
 
 void Game::timeContinue()
 {
-    MainTime->start(frameUpdateSeconds);
+    MainTime->start(setting::frameUpdateSeconds);
 }
 
 void Game::setTimeCounter()
 {
-    int diff = (timeLimit - globalTime) / 30;
+    int diff = (setting::timeLimit - globalTime) / 30;
     int min = diff / 60, sec = diff % 60;
     char p[12] {};
     itoa(min, p, 10);
@@ -181,7 +166,7 @@ void Game::setTimeCounter()
 void Game::sceneUpdator()
 {
     globalTime++;
-    if (globalTime >= timeLimit)
+    if (globalTime >= setting::timeLimit)
     {
         MainTime->stop();
         if (red->getScore() > blue->getScore())
@@ -274,7 +259,7 @@ void Game::RedLabelTextSetting()
     itoa(red->getScore(), p, 10);
     ui->RedScoreLabel->setText(p);
     ui->RedLifeBar->setValue(red->getLife());
-    ui->RedLifeBar->setMaximum(10);
+    ui->RedLifeBar->setMaximum(setting::PacmanLifePoint);
 }
 
 void Game::BlueLabelTextSetting()
@@ -283,13 +268,13 @@ void Game::BlueLabelTextSetting()
     itoa(blue->getScore(), p, 10);
     ui->BlueScoreLabel->setText(p);
     ui->BlueLifeBar->setValue(blue->getLife());
-    ui->BlueLifeBar->setMaximum(10);
+    ui->BlueLifeBar->setMaximum(setting::PacmanLifePoint);
 }
 
 void Game::yieldBean()
 {
     srand(clock());
-    if ((rand() % 100 < beanYieldRate) && (totalBeans <= BeansLimit))
+    if ((rand() % 100 < setting::beanYieldRate) && (totalBeans <= setting::BeansLimit))
     {
         QTransform trans(1, 0, 0, 0, 1, 0, 0, 0, 1);
         qreal nx = 0.5, ny = 0.5;
@@ -354,8 +339,8 @@ void Game::keySlotOut()
             pos = red->Pacman::getPosition();
             pre_pos = pos;
             angle = red->getGunAngle() * acos(-1) / 180;
-            pos.rx() += pacmanWalkLength * frameUpdateSeconds * cos(angle);
-            pos.ry() += pacmanWalkLength * frameUpdateSeconds * sin(angle);
+            pos.rx() += setting::pacmanWalkLength * setting::frameUpdateSeconds * cos(angle);
+            pos.ry() += setting::pacmanWalkLength * setting::frameUpdateSeconds * sin(angle);
             red->setPosition(pos);
             for (auto iter: scene.collidingItems(red))
             {
@@ -371,14 +356,14 @@ void Game::keySlotOut()
             break;
         case Qt::Key_A:
             angle = red->getGunAngle();
-            red->set_angle(angle - pacmanRotation * frameUpdateSeconds);
+            red->set_angle(angle - setting::pacmanRotation * setting::frameUpdateSeconds);
             break;
         case Qt::Key_D:
             angle = red->getGunAngle();
-            red->set_angle(angle + pacmanRotation * frameUpdateSeconds);
+            red->set_angle(angle + setting::pacmanRotation * setting::frameUpdateSeconds);
             break;
         case Qt::Key_S:
-            if (globalTime - red->lastShooting() > shootingLimit)
+            if (globalTime - red->lastShooting() > setting::shootingLimit)
             {
                 red->lastShooting() = globalTime;
                 pos = red->Pacman::getPosition();
@@ -395,8 +380,8 @@ void Game::keySlotOut()
             pos = blue->Pacman::getPosition();
             pre_pos = pos;
             angle = blue->getGunAngle() * acos(-1) / 180;
-            pos.rx() += pacmanWalkLength * frameUpdateSeconds * cos(angle);
-            pos.ry() += pacmanWalkLength * frameUpdateSeconds * sin(angle);
+            pos.rx() += setting::pacmanWalkLength * setting::frameUpdateSeconds * cos(angle);
+            pos.ry() += setting::pacmanWalkLength * setting::frameUpdateSeconds * sin(angle);
             blue->setPosition(pos);
             for (auto iter: scene.collidingItems(blue))
             {
@@ -412,14 +397,14 @@ void Game::keySlotOut()
             break;
         case Qt::Key_Left:
             angle = blue->getGunAngle();
-            blue->set_angle(angle - pacmanRotation * frameUpdateSeconds);
+            blue->set_angle(angle - setting::pacmanRotation * setting::frameUpdateSeconds);
             break;
         case Qt::Key_Right:
             angle = blue->getGunAngle();
-            blue->set_angle(angle + pacmanRotation * frameUpdateSeconds);
+            blue->set_angle(angle + setting::pacmanRotation * setting::frameUpdateSeconds);
             break;
         case Qt::Key_Down:
-            if (globalTime - blue->lastShooting() > shootingLimit)
+            if (globalTime - blue->lastShooting() > setting::shootingLimit)
             {
                 blue->lastShooting() = globalTime;
                 pos = blue->Pacman::getPosition();

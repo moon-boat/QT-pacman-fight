@@ -31,8 +31,9 @@ void MainWindow::on_StartGameButton_clicked()
 
 void MainWindow::on_MainMenuSettingButton_clicked()
 {
-    if (sp == nullptr)
-        sp = new SettingPage(this);
+    if (sp)
+        delete sp;
+    sp = new SettingPage(this, true);
     QPoint globalPos = mapToGlobal(QPoint(0, 0));
     sp->move(globalPos.x(), globalPos.y());
     ui->MainMenuSettingButton->setAttribute(Qt::WA_UnderMouse, false);

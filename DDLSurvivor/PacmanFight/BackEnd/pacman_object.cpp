@@ -1,12 +1,13 @@
 #include "pacman_object.h"
 #include "gameabstractobject.h"
+#include "setting.h"
 
 QRectF pacman_size {-30,-30,60,60};
 QString pacman_path[2]{":/images/resources/pacman.png",":/images/resources/pacman.png"};
 QPointF pacman_point[2]{{200,200},{800,600}};
 
 pacman_object::pacman_object(int type): GameAbstractObject(pacman_size, pacman_path[type], pacman, pacman_point[type], 0, 0),
-    Pacman(type,pacman_point[type],30,0,10,0), lastShoot(-10)
+    Pacman(type,pacman_point[type],30,0,setting::PacmanLifePoint,0), lastShoot(-setting::shootingLimit)
 {
     setZValue(0);
 }

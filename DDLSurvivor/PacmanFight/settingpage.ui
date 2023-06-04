@@ -115,14 +115,46 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgba(0, 0, 0, 0);
-border-color: rgba(0, 0, 0, 0);</string>
+   <string notr="true">QSlider::groove:horizontal {
+	height: 5px;
+	background: #e67e22;
+}
+QSlider::groove:vertical {
+	width: 5px;
+	background: #e67e22;
+}
+QSlider::handle:horizontal {
+	background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);
+	border: 1px solid #5c5c5c;
+	width: 14px;
+	margin: -5px 0;
+	border-radius: 7px;
+}
+QSlider::handle:vertical {
+	background: qlineargradient(x1:1, y1:1, x2:0, y2:0, stop:0 #b4b4b4, stop:1 #8f8f8f);
+	border: 1px solid #5c5c5c;
+	height: 14px;
+	margin: 0 -5px;
+	border-radius: 7px;
+}
+QSlider::add-page:horizontal {
+    background: white;
+}
+QSlider::add-page:vertical {
+    background: white;
+}
+QSlider::sub-page:horizontal {
+    background: #e67e22;
+}
+QSlider::sub-page:vertical {
+    background: #e67e22;
+}</string>
   </property>
   <widget class="QPushButton" name="ReturnParentInSetting">
    <property name="geometry">
     <rect>
      <x>550</x>
-     <y>400</y>
+     <y>600</y>
      <width>92</width>
      <height>29</height>
     </rect>
@@ -186,7 +218,7 @@ border-color: rgba(0, 0, 0, 0);</string>
       </colorrole>
       <colorrole role="PlaceholderText">
        <brush brushstyle="SolidPattern">
-        <color alpha="255">
+        <color alpha="128">
          <red>255</red>
          <green>0</green>
          <blue>4</blue>
@@ -251,7 +283,7 @@ border-color: rgba(0, 0, 0, 0);</string>
       </colorrole>
       <colorrole role="PlaceholderText">
        <brush brushstyle="SolidPattern">
-        <color alpha="255">
+        <color alpha="128">
          <red>255</red>
          <green>0</green>
          <blue>4</blue>
@@ -316,7 +348,7 @@ border-color: rgba(0, 0, 0, 0);</string>
       </colorrole>
       <colorrole role="PlaceholderText">
        <brush brushstyle="SolidPattern">
-        <color alpha="255">
+        <color alpha="128">
          <red>255</red>
          <green>0</green>
          <blue>4</blue>
@@ -355,7 +387,7 @@ QPushButton::hover{
    <property name="geometry">
     <rect>
      <x>330</x>
-     <y>400</y>
+     <y>600</y>
      <width>92</width>
      <height>29</height>
     </rect>
@@ -419,7 +451,7 @@ QPushButton::hover{
       </colorrole>
       <colorrole role="PlaceholderText">
        <brush brushstyle="SolidPattern">
-        <color alpha="255">
+        <color alpha="128">
          <red>255</red>
          <green>0</green>
          <blue>4</blue>
@@ -484,7 +516,7 @@ QPushButton::hover{
       </colorrole>
       <colorrole role="PlaceholderText">
        <brush brushstyle="SolidPattern">
-        <color alpha="255">
+        <color alpha="128">
          <red>255</red>
          <green>0</green>
          <blue>4</blue>
@@ -549,7 +581,7 @@ QPushButton::hover{
       </colorrole>
       <colorrole role="PlaceholderText">
        <brush brushstyle="SolidPattern">
-        <color alpha="255">
+        <color alpha="128">
          <red>255</red>
          <green>0</green>
          <blue>4</blue>
@@ -582,6 +614,657 @@ QPushButton::hover{
    </property>
    <property name="flat">
     <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QSlider" name="timeLimitSlider">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>240</y>
+     <width>160</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QSlider::groove:horizontal {
+	height: 5px;
+	background: #e67e22;
+}
+QSlider::groove:vertical {
+	width: 5px;
+	background: #e67e22;
+}
+QSlider::handle:horizontal {
+	background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);
+	border: 1px solid #5c5c5c;
+	width: 14px;
+	margin: -5px 0;
+	border-radius: 7px;
+}
+QSlider::handle:vertical {
+	background: qlineargradient(x1:1, y1:1, x2:0, y2:0, stop:0 #b4b4b4, stop:1 #8f8f8f);
+	border: 1px solid #5c5c5c;
+	height: 14px;
+	margin: 0 -5px;
+	border-radius: 7px;
+}
+QSlider::add-page:horizontal {
+    background: white;
+}
+QSlider::add-page:vertical {
+    background: white;
+}
+QSlider::sub-page:horizontal {
+    background: #e67e22;
+}
+QSlider::sub-page:vertical {
+    background: #e67e22;
+}</string>
+   </property>
+   <property name="maximum">
+    <number>300</number>
+   </property>
+   <property name="value">
+    <number>0</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="tickPosition">
+    <enum>QSlider::TicksBothSides</enum>
+   </property>
+   <property name="tickInterval">
+    <number>10</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="TimeLimitSetting">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>240</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 255, 0);
+font: 700 12pt &quot;Segoe Print&quot;;
+}</string>
+   </property>
+   <property name="text">
+    <string>对局时间</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="TimeLimitLabel">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>240</y>
+     <width>54</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 255, 0);
+font: 700 italic 12pt &quot;Monotype Corsiva&quot;;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QSlider" name="PacmanLPSlider">
+   <property name="geometry">
+    <rect>
+     <x>415</x>
+     <y>480</y>
+     <width>160</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QSlider::groove:horizontal {
+	height: 5px;
+	background: #e67e22;
+}
+QSlider::groove:vertical {
+	width: 5px;
+	background: #e67e22;
+}
+QSlider::handle:horizontal {
+	background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);
+	border: 1px solid #5c5c5c;
+	width: 14px;
+	margin: -5px 0;
+	border-radius: 7px;
+}
+QSlider::handle:vertical {
+	background: qlineargradient(x1:1, y1:1, x2:0, y2:0, stop:0 #b4b4b4, stop:1 #8f8f8f);
+	border: 1px solid #5c5c5c;
+	height: 14px;
+	margin: 0 -5px;
+	border-radius: 7px;
+}
+QSlider::add-page:horizontal {
+    background: white;
+}
+QSlider::add-page:vertical {
+    background: white;
+}
+QSlider::sub-page:horizontal {
+    background: #e67e22;
+}
+QSlider::sub-page:vertical {
+    background: #e67e22;
+}</string>
+   </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="tickPosition">
+    <enum>QSlider::TicksBothSides</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="PacmanLPSetting">
+   <property name="geometry">
+    <rect>
+     <x>335</x>
+     <y>480</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 255, 0);
+font: 700 12pt &quot;Segoe Print&quot;;
+}</string>
+   </property>
+   <property name="text">
+    <string>生命值</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="PacmanLPLabel">
+   <property name="geometry">
+    <rect>
+     <x>585</x>
+     <y>480</y>
+     <width>54</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 255, 0);
+font: 700 italic 12pt &quot;Monotype Corsiva&quot;;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="PacmanWalkSetting">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>300</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 255, 0);
+font: 700 12pt &quot;Segoe Print&quot;;
+}</string>
+   </property>
+   <property name="text">
+    <string>移动速度</string>
+   </property>
+  </widget>
+  <widget class="QSlider" name="PacmanWalkSlider">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>300</y>
+     <width>160</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QSlider::groove:horizontal {
+	height: 5px;
+	background: #e67e22;
+}
+QSlider::groove:vertical {
+	width: 5px;
+	background: #e67e22;
+}
+QSlider::handle:horizontal {
+	background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);
+	border: 1px solid #5c5c5c;
+	width: 14px;
+	margin: -5px 0;
+	border-radius: 7px;
+}
+QSlider::handle:vertical {
+	background: qlineargradient(x1:1, y1:1, x2:0, y2:0, stop:0 #b4b4b4, stop:1 #8f8f8f);
+	border: 1px solid #5c5c5c;
+	height: 14px;
+	margin: 0 -5px;
+	border-radius: 7px;
+}
+QSlider::add-page:horizontal {
+    background: white;
+}
+QSlider::add-page:vertical {
+    background: white;
+}
+QSlider::sub-page:horizontal {
+    background: #e67e22;
+}
+QSlider::sub-page:vertical {
+    background: #e67e22;
+}</string>
+   </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>10</number>
+   </property>
+   <property name="value">
+    <number>1</number>
+   </property>
+   <property name="sliderPosition">
+    <number>1</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="ShootLImit">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>300</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 255, 0);
+font: 700 12pt &quot;Segoe Print&quot;;
+}</string>
+   </property>
+   <property name="text">
+    <string>攻击间歇</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="PacmanWalkLabel">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>300</y>
+     <width>54</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 255, 0);
+font: 700 italic 12pt &quot;Monotype Corsiva&quot;;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="BeanNum">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>360</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 255, 0);
+font: 700 12pt &quot;Segoe Print&quot;;
+}</string>
+   </property>
+   <property name="text">
+    <string>豆子总数</string>
+   </property>
+  </widget>
+  <widget class="QSlider" name="BeanNumSlider">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>360</y>
+     <width>160</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="BeanNumLabel">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>360</y>
+     <width>54</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 255, 0);
+font: 700 italic 12pt &quot;Monotype Corsiva&quot;;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="PacmanRotation">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>420</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 255, 0);
+font: 700 12pt &quot;Segoe Print&quot;;
+}</string>
+   </property>
+   <property name="text">
+    <string>旋转速度</string>
+   </property>
+  </widget>
+  <widget class="QSlider" name="PacmanRotationSlider">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>420</y>
+     <width>160</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>15</number>
+   </property>
+   <property name="value">
+    <number>1</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="PacmanRotationLabel">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>420</y>
+     <width>54</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 255, 0);
+font: 700 italic 12pt &quot;Monotype Corsiva&quot;;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="BeanRate">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>240</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 255, 0);
+font: 700 12pt &quot;Segoe Print&quot;;
+}</string>
+   </property>
+   <property name="text">
+    <string>豆子生成速度</string>
+   </property>
+  </widget>
+  <widget class="QSlider" name="BeanRateSlider">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>240</y>
+     <width>160</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>20</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="BeanRateLabel">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>240</y>
+     <width>54</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 255, 0);
+font: 700 italic 12pt &quot;Monotype Corsiva&quot;;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="PacmanAttack">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>420</y>
+     <width>54</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 255, 0);
+font: 700 12pt &quot;Segoe Print&quot;;
+}</string>
+   </property>
+   <property name="text">
+    <string>攻击力</string>
+   </property>
+  </widget>
+  <widget class="QSlider" name="PacmanAttackSlider">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>420</y>
+     <width>160</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="minimum">
+    <number>0</number>
+   </property>
+   <property name="maximum">
+    <number>10</number>
+   </property>
+   <property name="value">
+    <number>0</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="PacmanAttackLabel">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>420</y>
+     <width>54</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 255, 0);
+font: 700 italic 12pt &quot;Monotype Corsiva&quot;;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QSlider" name="ShootLimitSlider">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>300</y>
+     <width>160</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="minimum">
+    <number>5</number>
+   </property>
+   <property name="maximum">
+    <number>30</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="ShootLimitLabel">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>300</y>
+     <width>54</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 255, 0);
+font: 700 italic 12pt &quot;Monotype Corsiva&quot;;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Update">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>360</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 255, 0);
+font: 700 12pt &quot;Segoe Print&quot;;
+}</string>
+   </property>
+   <property name="text">
+    <string>帧率</string>
+   </property>
+  </widget>
+  <widget class="QSlider" name="UpdateSlider">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>360</y>
+     <width>160</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="minimum">
+    <number>10</number>
+   </property>
+   <property name="maximum">
+    <number>120</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="UpdateLabel">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>360</y>
+     <width>54</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-image: url(:/images/resources/blankBack.png);
+color: rgb(255, 255, 0);
+font: 700 italic 12pt &quot;Monotype Corsiva&quot;;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

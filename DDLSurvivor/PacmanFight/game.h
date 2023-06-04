@@ -18,6 +18,7 @@
 #include "./BackEnd/wall_object.h"
 #include "./BackEnd/ghost_object.h"
 #include "gameoverwidget.h"
+#include "setting.h"
 
 namespace Ui {
 class Game;
