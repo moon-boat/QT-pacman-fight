@@ -36,8 +36,8 @@ void GameAbstractObject::paint(QPainter *painter, const QStyleOptionGraphicsItem
 
 void GameAbstractObject::updatePos(int frameUpdateSeconds)
 {
-    pos.rx() += velocity * frameUpdateSeconds * cos(direction);
-    pos.ry() += velocity * frameUpdateSeconds * sin(direction);
+    pos.rx() += velocity * 33 * cos(direction);
+    pos.ry() += velocity * 33 * sin(direction);
 }
 
 QPointF& GameAbstractObject::setPosition()

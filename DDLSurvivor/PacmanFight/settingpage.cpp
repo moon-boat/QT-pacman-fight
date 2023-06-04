@@ -11,8 +11,8 @@ SettingPage::SettingPage(QWidget *parent, bool main):
     setWindowOpacity(0.7);
     ui->timeLimitSlider->setValue(setting::timeLimit / (1000 / setting::frameUpdateSeconds));
     ui->PacmanLPSlider->setValue(setting::PacmanLifePoint);
-    ui->PacmanWalkSlider->setValue(setting::pacmanWalkLength*100);
-    ui->PacmanRotationSlider->setValue(setting::pacmanRotation*100);
+    ui->PacmanWalkSlider->setValue(setting::pacmanWalkLength * 1000);
+    ui->PacmanRotationSlider->setValue(setting::pacmanRotation * 1000);
     ui->BeanNumSlider->setValue(setting::BeansLimit);
     ui->BeanRateSlider->setValue(setting::beanYieldRate);
     ui->PacmanAttackSlider->setValue(setting::bulletAttack);
@@ -64,7 +64,7 @@ void SettingPage::on_PacmanLPSlider_valueChanged(int value)
 
 void SettingPage::on_PacmanWalkSlider_valueChanged(int value)
 {
-    setting::pacmanWalkLength = ((qreal)value)/100;
+    setting::pacmanWalkLength = ((qreal)value)/1000;
     char p[4] {};
     itoa(value, p, 10);
     ui->PacmanWalkLabel->setText(p);
@@ -73,7 +73,7 @@ void SettingPage::on_PacmanWalkSlider_valueChanged(int value)
 
 void SettingPage::on_PacmanRotationSlider_valueChanged(int value)
 {
-    setting::pacmanRotation = ((qreal)value)/100;
+    setting::pacmanRotation = ((qreal)value)/1000;
     char p[4] {};
     itoa(value, p, 10);
     ui->PacmanRotationLabel->setText(p);
@@ -113,7 +113,7 @@ void SettingPage::on_ShootLimitSlider_valueChanged(int value)
 
 void SettingPage::on_UpdateSlider_valueChanged(int value)
 {
-    setting::frameUpdateSeconds = 1000/value;
+    setting::frameUpdateSeconds = 1000 / value;
     char p[4] {};
     itoa(value, p, 10);
     ui->UpdateLabel->setText(p);

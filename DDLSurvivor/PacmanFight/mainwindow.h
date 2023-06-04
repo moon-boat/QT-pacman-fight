@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "settingpage.h"
+#include "tutorial.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,9 +27,12 @@ private slots:
 
     void on_MainMenuQuitButton_clicked();
 
+    void on_MainMenuTutorialButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     SettingPage *sp;
+    Tutorial *sp1;
 
 };
 #endif // MAINWINDOW_H

@@ -17,6 +17,10 @@
         <file>resources/wall(4)(1).jpg</file>
         <file>resources/wall_fivetimes_horizontal.jpg</file>
         <file>resources/wall_fivetimes_vertical.jpg</file>
+        <file>resources/bluepacman.png</file>
+        <file>resources/redpacman.png</file>
+        <file>resources/Tutorial.png</file>
+        <file>resources/Tutorial_BG.png</file>
     </qresource>
     <qresource prefix="/music">
         <file>resources/music.mp3</file>

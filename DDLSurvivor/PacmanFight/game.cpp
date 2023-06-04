@@ -24,9 +24,11 @@ Game::Game(QWidget *parent, QWidget *main):
     sp = nullptr;
     MainTime = new QTimer(this);
     keyTime = new QTimer(this);
+    MainTime->setTimerType(Qt::PreciseTimer);
+    keyTime->setTimerType(Qt::PreciseTimer);
     setFocusPolicy(Qt::StrongFocus);
 
-    connect(MainTime, &QTimer::timeout, this, &Game::sceneUpdator);
+    connect(MainTime, &QTimer::timeout, this, &Game::startThread);
     connect(MainTime, &QTimer::timeout, this, &Game::RedLabelTextSetting);
     connect(MainTime, &QTimer::timeout, this, &Game::BlueLabelTextSetting);
     connect(keyTime, &QTimer::timeout, this, &Game::keySlotOut);
@@ -111,11 +113,12 @@ void Game::on_GameSettingButton_clicked()
 {
     if (sp == nullptr)
         sp = new SettingPage(this);
+    MainTime->stop();
+    keyTime->stop();
     QPoint globalPos = mapToGlobal(QPoint(0, 0));
-    sp->move(globalPos.x(), globalPos.y());
+    sp->move(globalPos);
     ui->GameSettingButton->setAttribute(Qt::WA_UnderMouse, false);
     sp->show();
-    MainTime->stop();
     connect(sp, &SettingPage::shouldQuit, this, &Game::recQuitSign, Qt::UniqueConnection);
     connect(sp, &SettingPage::timeContinue, this, &Game::timeContinue, Qt::UniqueConnection);
 }
@@ -148,10 +151,24 @@ void Game::JustClose()
 void Game::timeContinue()
 {
     MainTime->start(setting::frameUpdateSeconds);
+    keyTime->start(setting::frameUpdateSeconds);
 }
 
 void Game::setTimeCounter()
 {
+    globalTime++;
+    if (globalTime >= setting::timeLimit)
+    {
+        MainTime->stop();
+        keyTime->stop();
+        if (red->getScore() > blue->getScore())
+            gameOver(0);
+        else if (red->getScore() < blue->getScore())
+            gameOver(1);
+        else
+            gameOver(-1);
+        return ;
+    }
     int diff = (setting::timeLimit - globalTime) / 30;
     int min = diff / 60, sec = diff % 60;
     char p[12] {};
@@ -161,96 +178,111 @@ void Game::setTimeCounter()
     res += ":";
     res += p;
     ui->TimeCounter->setText(res);
-}
-
-void Game::sceneUpdator()
-{
-    globalTime++;
-    if (globalTime >= setting::timeLimit)
+    for (auto iter: scene.items())
     {
-        MainTime->stop();
-        if (red->getScore() > blue->getScore())
-            gameOver(0);
-        else if (red->getScore() < blue->getScore())
-            gameOver(1);
-        else
-            gameOver(-1);
-        return ;
-    }
-    for (int i = 0; i < env.length() + 2; i++)
-    {
-        GameAbstractObject *t = nullptr;
-        if (i < env.length())
-            t = env.at(i);
-        else if (i == env.length())
-            t = red;
-        else
-            t = blue;
-        if (t->type == wall or t->type == pacman)
+        GameAbstractObject *t = (GameAbstractObject *)iter;
+        if (t->type == bullet)
         {
-            if (t->type == wall)
+            bullet_object *p = (bullet_object *)t;
+            if (!p->isExist())
             {
-                wall_object *spe = (wall_object *)t;
-                    auto collides = scene.collidingItems(spe);
-                    for (auto iter2: collides)
-                    {
-                        GameAbstractObject *t2 = (GameAbstractObject *)iter2;
-                        if (t2->type != bullet)
-                            continue;
-                        bullet_object *spe2 = (bullet_object *)t2;
-                        if (!spe2->isExist())
-                        {
-                            scene.removeItem(iter2);
-                            delete spe2;
-                        }
-                        else
-                            spe2->collideWithWall(spe);
-                    }
-            }
-            else if (t->type == pacman)
-            {
-                pacman_object *spe3 = (pacman_object *)t;
-                if (spe3->getLife() <= 0)
-                {
-                    gameOver(1 - spe3->getColor());
-                    MainTime->stop();
-                    break;
-                }
-                auto collides2 = scene.collidingItems(spe3);
-                for (auto iter3: collides2)
-                {
-                    GameAbstractObject *t3 = (GameAbstractObject *)iter3;
-                    if (t3->type == bean)
-                    {
-                        bean_object *spe4 = (bean_object *)t3;
-                        if (spe3->eatBean(spe4))
-                        {
-                            totalBeans--;
-                            scene.removeItem(iter3);
-                            delete spe4;
-                        }
-                    }
-                    else if (t3->type == bullet)
-                    {
-                        bullet_object *spe5 = (bullet_object *)t3;
-                        if (spe3->getShot(spe5))
-                        {
-                            scene.removeItem(iter3);
-                            delete spe5;
-                        }
-                    }
-                    else if (t3->type == ghost)
-                    {
-                        ghost_object *spe6 = (ghost_object *)t3;
-                        if (spe6->attachAPacman(spe3))
-                            spe3->setLife(0);
-                    }
-                }
+                scene.removeItem(p);
+                delete p;
             }
         }
     }
-
     scene.update();
+}
+
+void Game::handleRedThreads(const QList<QGraphicsItem*> colliding)
+{
+    if (red->getLife() <= 0)
+    {
+        gameOver(1 - red->getColor());
+        MainTime->stop();
+        return ;
+    }
+    for (auto iter3: colliding)
+    {
+        GameAbstractObject *t3 = (GameAbstractObject *)iter3;
+        if (t3->type == bean)
+        {
+            bean_object *spe4 = (bean_object *)t3;
+            if (red->eatBean(spe4))
+            {
+                totalBeans--;
+                scene.removeItem(iter3);
+                delete spe4;
+            }
+        }
+        else if (t3->type == bullet)
+        {
+            bullet_object *spe5 = (bullet_object *)t3;
+            if (red->getShot(spe5))
+            {
+                scene.removeItem(iter3);
+                delete spe5;
+            }
+        }
+        else if (t3->type == ghost)
+        {
+            ghost_object *spe6 = (ghost_object *)t3;
+            if (spe6->attachAPacman(red))
+                red->setLife(0);
+        }
+    }
+}
+
+void Game::handleBlueThreads(const QList<QGraphicsItem*> colliding)
+{
+    if (blue->getLife() <= 0)
+    {
+        gameOver(1 - blue->getColor());
+        MainTime->stop();
+        return ;
+    }
+    for (auto iter3: colliding)
+    {
+        GameAbstractObject *t3 = (GameAbstractObject *)iter3;
+        if (t3->type == bean)
+        {
+            bean_object *spe4 = (bean_object *)t3;
+            if (blue->eatBean(spe4))
+            {
+                totalBeans--;
+                scene.removeItem(iter3);
+                delete spe4;
+            }
+        }
+        else if (t3->type == bullet)
+        {
+            bullet_object *spe5 = (bullet_object *)t3;
+            if (blue->getShot(spe5))
+            {
+                scene.removeItem(iter3);
+                delete spe5;
+            }
+        }
+        else if (t3->type == ghost)
+        {
+            ghost_object *spe6 = (ghost_object *)t3;
+            if (spe6->attachAPacman(blue))
+                blue->setLife(0);
+        }
+    }
+}
+
+void Game::handleWallThreads(const wall_object *ob, const QList<QGraphicsItem*> colliding)
+{
+    for (auto iter2: colliding)
+    {
+        GameAbstractObject *t2 = (GameAbstractObject *)iter2;
+        if (t2->type != bullet)
+            continue;
+        bullet_object *spe2 = (bullet_object *)t2;
+        spe2->collideWithWall(ob);
+        spe2->update();
+    }
 }
 
 void Game::RedLabelTextSetting()
@@ -312,8 +344,8 @@ void Game::keyPressEvent(QKeyEvent *event)
 {
     if (!event->isAutoRepeat())
         keys.append(event->key());
-    if (!keyTime->isActive())
-        keyTime->start(4);
+    if (MainTime->isActive() && !keyTime->isActive())
+        keyTime->start(setting::frameUpdateSeconds);
 }
 
 void Game::keyReleaseEvent(QKeyEvent *event)
@@ -339,8 +371,8 @@ void Game::keySlotOut()
             pos = red->Pacman::getPosition();
             pre_pos = pos;
             angle = red->getGunAngle() * acos(-1) / 180;
-            pos.rx() += setting::pacmanWalkLength * setting::frameUpdateSeconds * cos(angle);
-            pos.ry() += setting::pacmanWalkLength * setting::frameUpdateSeconds * sin(angle);
+            pos.rx() += setting::pacmanWalkLength * 33 * cos(angle);
+            pos.ry() += setting::pacmanWalkLength * 33 * sin(angle);
             red->setPosition(pos);
             for (auto iter: scene.collidingItems(red))
             {
@@ -356,11 +388,11 @@ void Game::keySlotOut()
             break;
         case Qt::Key_A:
             angle = red->getGunAngle();
-            red->set_angle(angle - setting::pacmanRotation * setting::frameUpdateSeconds);
+            red->set_angle(angle - setting::pacmanRotation * 33);
             break;
         case Qt::Key_D:
             angle = red->getGunAngle();
-            red->set_angle(angle + setting::pacmanRotation * setting::frameUpdateSeconds);
+            red->set_angle(angle + setting::pacmanRotation * 33);
             break;
         case Qt::Key_S:
             if (globalTime - red->lastShooting() > setting::shootingLimit)
@@ -380,8 +412,8 @@ void Game::keySlotOut()
             pos = blue->Pacman::getPosition();
             pre_pos = pos;
             angle = blue->getGunAngle() * acos(-1) / 180;
-            pos.rx() += setting::pacmanWalkLength * setting::frameUpdateSeconds * cos(angle);
-            pos.ry() += setting::pacmanWalkLength * setting::frameUpdateSeconds * sin(angle);
+            pos.rx() += setting::pacmanWalkLength * 33 * cos(angle);
+            pos.ry() += setting::pacmanWalkLength * 33 * sin(angle);
             blue->setPosition(pos);
             for (auto iter: scene.collidingItems(blue))
             {
@@ -397,11 +429,11 @@ void Game::keySlotOut()
             break;
         case Qt::Key_Left:
             angle = blue->getGunAngle();
-            blue->set_angle(angle - setting::pacmanRotation * setting::frameUpdateSeconds);
+            blue->set_angle(angle - setting::pacmanRotation * 33);
             break;
         case Qt::Key_Right:
             angle = blue->getGunAngle();
-            blue->set_angle(angle + setting::pacmanRotation * setting::frameUpdateSeconds);
+            blue->set_angle(angle + setting::pacmanRotation * 33);
             break;
         case Qt::Key_Down:
             if (globalTime - blue->lastShooting() > setting::shootingLimit)
@@ -423,6 +455,8 @@ void Game::keySlotOut()
 
 void Game::gameOver(int WinnerType)
 {
+    if (this->isHidden())
+        return ;
     GameOverWidget *gow = new GameOverWidget(WinnerType);
     connect(gow, &GameOverWidget::newOne, this, &Game::reBorn);
     gow->show();

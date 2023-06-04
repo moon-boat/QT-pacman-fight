@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     sp = nullptr;
+    sp1 = nullptr;
 }
 
 MainWindow::~MainWindow()
@@ -35,7 +36,7 @@ void MainWindow::on_MainMenuSettingButton_clicked()
         delete sp;
     sp = new SettingPage(this, true);
     QPoint globalPos = mapToGlobal(QPoint(0, 0));
-    sp->move(globalPos.x(), globalPos.y());
+    sp->move(globalPos);
     ui->MainMenuSettingButton->setAttribute(Qt::WA_UnderMouse, false);
     sp->show();
     connect(sp, &SettingPage::shouldQuit, this, &MainWindow::recQuitSign, Qt::UniqueConnection);
@@ -52,3 +53,14 @@ void MainWindow::on_MainMenuQuitButton_clicked()
 {
     close();
 }
+
+void MainWindow::on_MainMenuTutorialButton_clicked()
+{
+    if (sp1 == nullptr)
+        sp1 = new Tutorial(this);
+    QPoint globalPos = mapToGlobal(QPoint(0, 0));
+    sp1->move(globalPos);
+    ui->MainMenuSettingButton->setAttribute(Qt::WA_UnderMouse, false);
+    sp1->show();
+}
+

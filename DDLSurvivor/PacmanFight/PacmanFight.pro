@@ -31,11 +31,14 @@ HEADERS += game.h \
            BackEnd/pacman_object.h \
            BackEnd/wall.h \
            BackEnd/wall_object.h \
+           tutorial.h \
            ui_game.h \
            ui_gameoverwidget.h \
            ui_mainwindow.h \
-           ui_settingpage.h
-FORMS += game.ui gameoverwidget.ui mainwindow.ui settingpage.ui
+           ui_settingpage.h \
+           ui_tutorial.h
+FORMS += game.ui gameoverwidget.ui mainwindow.ui settingpage.ui \
+    tutorial.ui
 SOURCES += game.cpp \
            gameoverwidget.cpp \
            main.cpp \
@@ -53,7 +56,8 @@ SOURCES += game.cpp \
            BackEnd/pacman.cpp \
            BackEnd/pacman_object.cpp \
            BackEnd/wall.cpp \
-           BackEnd/wall_object.cpp
+           BackEnd/wall_object.cpp \
+           tutorial.cpp
 RESOURCES += resources.qrc
 
 QT += core gui
