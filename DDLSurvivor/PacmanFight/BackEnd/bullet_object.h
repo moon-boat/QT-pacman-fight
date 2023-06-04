@@ -8,7 +8,7 @@
 class bullet_object: public GameAbstractObject, public Bullet
 {
 public:
-    bullet_object(QPointF _pos,qreal _angle);
+    bullet_object(const QPointF& _pos,qreal _angle);
     void set_pos();
     void set_angle();
     void update();

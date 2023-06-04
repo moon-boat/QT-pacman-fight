@@ -52,9 +52,25 @@ Game::Game(QWidget *parent, QWidget *main):
     ghost_object *ghost1 = new ghost_object(QPointF(400, 400), 0);
     connect(MainTime, &QTimer::timeout, this, &Game::sendPos);
     connect(this, &Game::passPos, ghost1, &ghost_object::update, Qt::DirectConnection);
-    wall_object *testWall = new wall_object(QPointF(400, 400), QRectF(0, 0, 200, 40));
 
-    scene.addItem(testWall);
+    wall_object *testWall = new wall_object(QPointF(400, 400), QRectF(0, 0, 200, 40));
+    wall_object *testWall2 = new wall_object(QPointF(800, 0), QRectF(0, 0, 46, 226));
+    env.append(testWall);
+    env.append(testWall2);
+    for (int i = 0; i < 5; i++)
+    {
+        env.append(new wall_object(QPointF(i * 205, 0), QRectF(0, 0, 205, 46)));
+        env.append(new wall_object(QPointF(i * 205, 768 - 46), QRectF(0, 0, 205, 46)));
+    }
+    for (int i = 0; i < 4; i++)
+    {
+        env.append(new wall_object((QPointF(0, 46 + i * 226)), QRectF(0, 0, 46, 226)));
+        env.append(new wall_object(QPointF(1024 - 46, 46 + i * 226), QRectF(0, 0, 46, 226)));
+    }
+
+
+    for (auto t: env)
+        scene.addItem(t);
     scene.addItem(ghost1);
     scene.addItem(red);
     scene.addItem(blue);
@@ -176,32 +192,35 @@ void Game::sceneUpdator()
             gameOver(-1);
         return ;
     }
-    for (int i = 0; i < scene.items().length(); i++)
+    for (int i = 0; i < env.length() + 2; i++)
     {
-        auto iter = scene.items().at(i);
-        GameAbstractObject *t = (GameAbstractObject *)iter;
-        if (t->type == bullet or t->type == pacman)
+        GameAbstractObject *t = nullptr;
+        if (i < env.length())
+            t = env.at(i);
+        else if (i == env.length())
+            t = red;
+        else
+            t = blue;
+        if (t->type == wall or t->type == pacman)
         {
-            if (t->type == bullet)
+            if (t->type == wall)
             {
-                bullet_object *spe = (bullet_object *)t;
-                if (!spe->isExist())
-                {
-                    scene.removeItem(iter);
-                    delete spe;
-                }
-                else
-                {
+                wall_object *spe = (wall_object *)t;
                     auto collides = scene.collidingItems(spe);
                     for (auto iter2: collides)
                     {
                         GameAbstractObject *t2 = (GameAbstractObject *)iter2;
-                        if (t2->type != wall)
+                        if (t2->type != bullet)
                             continue;
-                        wall_object *spe2 = (wall_object *)t2;
-                        spe->collideWithWall(spe2);
+                        bullet_object *spe2 = (bullet_object *)t2;
+                        if (!spe2->isExist())
+                        {
+                            scene.removeItem(iter2);
+                            delete spe2;
+                        }
+                        else
+                            spe2->collideWithWall(spe);
                     }
-                }
             }
             else if (t->type == pacman)
             {

@@ -63,6 +63,7 @@ private:
     SettingPage *sp;
     QTimer *MainTime, *keyTime;
     pacman_object *red, *blue;
+    QList<wall_object *> env;
     QGraphicsScene scene;
     QList<int> keys;
     long long globalTime;

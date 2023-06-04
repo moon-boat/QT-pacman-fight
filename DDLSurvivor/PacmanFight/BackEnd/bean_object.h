@@ -12,7 +12,7 @@ private:
 protected:
 
 public:
-    bean_object(BeanType type,QPointF _pos);
+    bean_object(BeanType type, const QPointF& _pos);
 };
 
 #endif // BEAN_OBJECT_H

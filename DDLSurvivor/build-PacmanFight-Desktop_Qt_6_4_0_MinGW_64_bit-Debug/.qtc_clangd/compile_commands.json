@@ -3036,10 +3036,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "E:\\ProgramFiles\\Github\\QT_TeamWork\\QT-pacman-fight\\DDLSurvivor\\build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\ui_gameoverwidget.h"
+        "E:\\ProgramFiles\\Github\\QT_TeamWork\\QT-pacman-fight\\DDLSurvivor\\build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\ui_settingpage.h"
     ],
     "directory": "E:/ProgramFiles/Github/QT_TeamWork/QT-pacman-fight/DDLSurvivor/build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "E:/ProgramFiles/Github/QT_TeamWork/QT-pacman-fight/DDLSurvivor/build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/ui_gameoverwidget.h"
+    "file": "E:/ProgramFiles/Github/QT_TeamWork/QT-pacman-fight/DDLSurvivor/build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/ui_settingpage.h"
 },
 {
     "arguments": [
@@ -3192,9 +3192,9 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "E:\\ProgramFiles\\Github\\QT_TeamWork\\QT-pacman-fight\\DDLSurvivor\\build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\ui_settingpage.h"
+        "E:\\ProgramFiles\\Github\\QT_TeamWork\\QT-pacman-fight\\DDLSurvivor\\build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\ui_gameoverwidget.h"
     ],
     "directory": "E:/ProgramFiles/Github/QT_TeamWork/QT-pacman-fight/DDLSurvivor/build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "E:/ProgramFiles/Github/QT_TeamWork/QT-pacman-fight/DDLSurvivor/build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/ui_settingpage.h"
+    "file": "E:/ProgramFiles/Github/QT_TeamWork/QT-pacman-fight/DDLSurvivor/build-PacmanFight-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/ui_gameoverwidget.h"
 }
 ]

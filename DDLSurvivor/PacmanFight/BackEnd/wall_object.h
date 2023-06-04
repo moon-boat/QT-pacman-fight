@@ -7,7 +7,7 @@
 class wall_object:public GameAbstractObject, public Wall
 {
 public:
-    wall_object(QPointF _pos, QRectF _rec);
+    wall_object(const QPointF& _pos, const QRectF& _rec);
 };
 
 #endif // WALL_OBJECT_H
