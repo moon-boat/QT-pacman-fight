@@ -25,6 +25,7 @@ public:
     QPushButton *StartGameButton;
     QPushButton *MainMenuSettingButton;
     QPushButton *MainMenuQuitButton;
+    QPushButton *MainMenuTutorialButton;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -76,7 +77,7 @@ public:
         MainMenuSettingButton->setFlat(true);
         MainMenuQuitButton = new QPushButton(centralwidget);
         MainMenuQuitButton->setObjectName("MainMenuQuitButton");
-        MainMenuQuitButton->setGeometry(QRect(100, 420, 121, 51));
+        MainMenuQuitButton->setGeometry(QRect(100, 470, 121, 51));
         MainMenuQuitButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background-image: url(:/images/resources/blankBack.png);\n"
 "color: rgb(255, 0, 4);\n"
@@ -86,6 +87,19 @@ public:
 "	color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:0.166 rgba(255, 255, 0, 255), stop:0.333 rgba(0, 255, 0, 255), stop:0.5 rgba(0, 255, 255, 255), stop:0.666 rgba(0, 0, 255, 255), stop:0.833 rgba(255, 0, 255, 255), stop:1 rgba(255, 0, 0, 255));\n"
 "}"));
         MainMenuQuitButton->setFlat(true);
+        MainMenuTutorialButton = new QPushButton(centralwidget);
+        MainMenuTutorialButton->setObjectName("MainMenuTutorialButton");
+        MainMenuTutorialButton->setGeometry(QRect(100, 420, 121, 51));
+        MainMenuTutorialButton->setAutoFillBackground(false);
+        MainMenuTutorialButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"background-image: url(:/images/resources/blankBack.png);\n"
+"color: rgb(255, 0, 4);\n"
+"font: 16pt \"Segoe Print\";\n"
+"}\n"
+"QPushButton::hover{\n"
+"	color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:0.166 rgba(255, 255, 0, 255), stop:0.333 rgba(0, 255, 0, 255), stop:0.5 rgba(0, 255, 255, 255), stop:0.666 rgba(0, 0, 255, 255), stop:0.833 rgba(255, 0, 255, 255), stop:1 rgba(255, 0, 0, 255));\n"
+"}"));
+        MainMenuTutorialButton->setFlat(true);
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
@@ -102,6 +116,7 @@ public:
         StartGameButton->setText(QCoreApplication::translate("MainWindow", "Start", nullptr));
         MainMenuSettingButton->setText(QCoreApplication::translate("MainWindow", "Settings", nullptr));
         MainMenuQuitButton->setText(QCoreApplication::translate("MainWindow", "Quit", nullptr));
+        MainMenuTutorialButton->setText(QCoreApplication::translate("MainWindow", "Tutorial", nullptr));
     } // retranslateUi
 
 };

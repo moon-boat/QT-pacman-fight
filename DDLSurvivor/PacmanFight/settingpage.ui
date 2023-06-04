@@ -218,7 +218,7 @@ QSlider::sub-page:vertical {
       </colorrole>
       <colorrole role="PlaceholderText">
        <brush brushstyle="SolidPattern">
-        <color alpha="128">
+        <color alpha="255">
          <red>255</red>
          <green>0</green>
          <blue>4</blue>
@@ -283,7 +283,7 @@ QSlider::sub-page:vertical {
       </colorrole>
       <colorrole role="PlaceholderText">
        <brush brushstyle="SolidPattern">
-        <color alpha="128">
+        <color alpha="255">
          <red>255</red>
          <green>0</green>
          <blue>4</blue>
@@ -348,7 +348,7 @@ QSlider::sub-page:vertical {
       </colorrole>
       <colorrole role="PlaceholderText">
        <brush brushstyle="SolidPattern">
-        <color alpha="128">
+        <color alpha="255">
          <red>255</red>
          <green>0</green>
          <blue>4</blue>
@@ -451,7 +451,7 @@ QPushButton::hover{
       </colorrole>
       <colorrole role="PlaceholderText">
        <brush brushstyle="SolidPattern">
-        <color alpha="128">
+        <color alpha="255">
          <red>255</red>
          <green>0</green>
          <blue>4</blue>
@@ -516,7 +516,7 @@ QPushButton::hover{
       </colorrole>
       <colorrole role="PlaceholderText">
        <brush brushstyle="SolidPattern">
-        <color alpha="128">
+        <color alpha="255">
          <red>255</red>
          <green>0</green>
          <blue>4</blue>
@@ -581,7 +581,7 @@ QPushButton::hover{
       </colorrole>
       <colorrole role="PlaceholderText">
        <brush brushstyle="SolidPattern">
-        <color alpha="128">
+        <color alpha="255">
          <red>255</red>
          <green>0</green>
          <blue>4</blue>
@@ -1225,7 +1225,7 @@ font: 700 12pt &quot;Segoe Print&quot;;
 }</string>
    </property>
    <property name="text">
-    <string>帧率</string>
+    <string>游戏速度</string>
    </property>
   </widget>
   <widget class="QSlider" name="UpdateSlider">
