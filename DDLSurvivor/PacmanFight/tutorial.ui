@@ -253,10 +253,10 @@ QPushButton::hover{
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>122</x>
+     <x>137</x>
      <y>0</y>
-     <width>781</width>
-     <height>431</height>
+     <width>751</width>
+     <height>391</height>
     </rect>
    </property>
    <property name="text">
@@ -272,10 +272,10 @@ QPushButton::hover{
   <widget class="QLabel" name="tutorial_text">
    <property name="geometry">
     <rect>
-     <x>72</x>
-     <y>430</y>
+     <x>70</x>
+     <y>390</y>
      <width>881</width>
-     <height>271</height>
+     <height>301</height>
     </rect>
    </property>
    <property name="font">
