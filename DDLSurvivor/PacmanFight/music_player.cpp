@@ -13,7 +13,7 @@ Music_player::Music_player()
     output -> setMuted(0);
     qreal vol = 0.15;
     output -> setVolume(vol);
-    player -> setLoops(1);
+    player -> setLoops(-1);
 
 
 }
