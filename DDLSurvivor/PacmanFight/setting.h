@@ -8,7 +8,8 @@ class setting
 public:
     setting();
 
-    static int frameUpdateSeconds;
+    static int frameUpdateSeconds; // 实际的游戏速度
+    static int TrueFrameUpdateSeconds; // 真正的帧率
     static qreal pacmanWalkLength;
     static qreal pacmanRotation;
     static int beanYieldRate; // 1-100 for 0.1%-10% for each 1/30 second

@@ -24,8 +24,10 @@ Game::Game(QWidget *parent, QWidget *main):
     sp = nullptr;
     MainTime = new QTimer(this);
     keyTime = new QTimer(this);
+    sceneTime = new QTimer(this);
     MainTime->setTimerType(Qt::PreciseTimer);
     keyTime->setTimerType(Qt::PreciseTimer);
+    sceneTime->setTimerType(Qt::PreciseTimer);
     setFocusPolicy(Qt::StrongFocus);
 
     connect(MainTime, &QTimer::timeout, this, &Game::startThread);
@@ -35,8 +37,10 @@ Game::Game(QWidget *parent, QWidget *main):
     connect(MainTime, &QTimer::timeout, this, &Game::yieldBean);
     connect(MainTime, &QTimer::timeout, this, &Game::setTimeCounter);
     connect(MainTime, &QTimer::timeout, this, &Game::sendPos);
+    connect(sceneTime, &QTimer::timeout, this, &Game::sceneUpdate);
 
     MainTime->start(setting::frameUpdateSeconds);
+    sceneTime->start(setting::TrueFrameUpdateSeconds);
     scene.setSceneRect(0, 0, 1024, 768);
     scene.setItemIndexMethod(QGraphicsScene::NoIndex);
 
@@ -73,6 +77,7 @@ Game::~Game()
     delete ui;
     delete MainTime;
     delete keyTime;
+    delete sceneTime;
     if (sp)
         delete sp;
     for (auto iter: scene.items())
@@ -115,6 +120,7 @@ void Game::on_GameSettingButton_clicked()
         sp = new SettingPage(this);
     MainTime->stop();
     keyTime->stop();
+    sceneTime->stop();
     QPoint globalPos = mapToGlobal(QPoint(0, 0));
     sp->move(globalPos);
     ui->GameSettingButton->setAttribute(Qt::WA_UnderMouse, false);
@@ -151,7 +157,8 @@ void Game::JustClose()
 void Game::timeContinue()
 {
     MainTime->start(setting::frameUpdateSeconds);
-    keyTime->start(setting::frameUpdateSeconds);
+    keyTime->start(10);
+    sceneTime->start(setting::TrueFrameUpdateSeconds);
 }
 
 void Game::setTimeCounter()
@@ -178,6 +185,10 @@ void Game::setTimeCounter()
     res += ":";
     res += p;
     ui->TimeCounter->setText(res);
+}
+
+void Game::sceneUpdate()
+{
     for (auto iter: scene.items())
     {
         GameAbstractObject *t = (GameAbstractObject *)iter;
@@ -345,7 +356,7 @@ void Game::keyPressEvent(QKeyEvent *event)
     if (!event->isAutoRepeat())
         keys.append(event->key());
     if (MainTime->isActive() && !keyTime->isActive())
-        keyTime->start(setting::frameUpdateSeconds);
+        keyTime->start(10);
 }
 
 void Game::keyReleaseEvent(QKeyEvent *event)

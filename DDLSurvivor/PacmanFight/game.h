@@ -86,6 +86,7 @@ private slots:
     void reBorn(bool a);
     void setTimeCounter();
     void yieldBean();
+    void sceneUpdate();
     void sendPos();
     void handleRedThreads(const QList<QGraphicsItem*> colliding);
     void handleBlueThreads(const QList<QGraphicsItem*> colliding);
@@ -127,7 +128,7 @@ private:
     Ui::Game *ui;
     MainWindow *returnTo;
     SettingPage *sp;
-    QTimer *MainTime, *keyTime;
+    QTimer *MainTime, *keyTime, *sceneTime;
     pacman_object *red, *blue;
     QList<wall_object *> env;
     QGraphicsScene scene;

@@ -5,7 +5,8 @@ setting::setting()
 
 }
 
-int setting::frameUpdateSeconds = 33; // /1000 / 帧率
+int setting::frameUpdateSeconds = 33; // /1000 / 游戏速度
+int setting::TrueFrameUpdateSeconds = 33; // /1000
 qreal setting::pacmanWalkLength = 0.03; // / pacman每秒移动pacmanWalkLength * 1000个像素
 qreal setting::pacmanRotation = 0.06; //  /pacman每秒旋转 * 1000 度
 int setting::beanYieldRate = 5; // / 1-100 for 0.1%-10% for each 1/30 second

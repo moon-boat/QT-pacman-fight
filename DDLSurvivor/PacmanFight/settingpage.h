@@ -39,6 +39,8 @@ private slots:
 
     void on_UpdateSlider_valueChanged(int value);
 
+    void on_TrueFrameUpdateSlider_valueChanged(int value);
+
 signals:
     void shouldQuit(bool a);
     void timeContinue(bool a);

@@ -18,6 +18,7 @@ SettingPage::SettingPage(QWidget *parent, bool main):
     ui->PacmanAttackSlider->setValue(setting::bulletAttack);
     ui->ShootLimitSlider->setValue(setting::shootingLimit);
     ui->UpdateSlider->setValue(1000 / setting::frameUpdateSeconds);
+    ui->TrueFrameUpdateSlider->setValue(1000 / setting::TrueFrameUpdateSeconds);
     if (!main)
     {
         ui->PacmanLPSlider->setHidden(true);
@@ -117,5 +118,14 @@ void SettingPage::on_UpdateSlider_valueChanged(int value)
     char p[4] {};
     itoa(value, p, 10);
     ui->UpdateLabel->setText(p);
+}
+
+
+void SettingPage::on_TrueFrameUpdateSlider_valueChanged(int value)
+{
+    setting::TrueFrameUpdateSeconds = 1000 / value;
+    char p[4] {};
+    itoa(value, p, 10);
+    ui->TrueFrameUpdateLabel->setText(p);
 }
 
